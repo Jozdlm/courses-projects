@@ -1,6 +1,6 @@
 # Courses Projects Repository
 
-Welcome to my courses projects repository! This repository contains various projects, from my online courses. The projects span multiple programming languages and technologies.
+Welcome to my courses projects repository! This repository contains various projects, from my online courses that I made while I was taking it. The projects span multiple programming languages and technologies.
 
 Feel free to explore the repository, each folder correspond to a project.
 
@@ -11,8 +11,9 @@ Feel free to explore the repository, each folder correspond to a project.
 
 ## Projects
 
-| Project Name | Course | Technology | Type |
-| ------------ | ------ | ---------- | ---- |
+| Project Name                 | Course                                                                       | Technology | Type |
+| ---------------------------- | ---------------------------------------------------------------------------- | ---------- | ---- |
+| [Counter App](/counter-app/) | [React: De cero a experto](https://www.udemy.com/course/react-cero-experto/) | ReactJS    | Web  |
 
 ## License
 
