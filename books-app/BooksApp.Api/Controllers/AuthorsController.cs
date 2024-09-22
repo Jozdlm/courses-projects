@@ -1,6 +1,7 @@
+using BooksApp.Api.Data;
 using BooksApp.Api.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BooksApp.Api.Controllers;
 
@@ -8,9 +9,24 @@ namespace BooksApp.Api.Controllers;
 [ApiController]
 public class AuthorsController : ControllerBase
 {
-    [HttpGet]
-    public ActionResult<List<Author>> Get()
+    private readonly BooksDbContext _context;
+
+    public AuthorsController(BooksDbContext context)
     {
-        return new List<Author> { new Author { Id = 1, Name = "Jozuan" }, new Author { Id = 2, Name = "Dilan" } };
+        _context = context;
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<List<Author>>> Get()
+    {
+        return await _context.Authors.ToListAsync();
+    }
+
+    [HttpPost]
+    public async Task<ActionResult> Post(Author author)
+    {
+        _context.Add(author);
+        await _context.SaveChangesAsync();
+        return Ok(new { Success = true });
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using BooksApp.Api.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,7 +7,7 @@ public class BooksDbContext : DbContext
 {
     public DbSet<Author> Authors { get; set; }
 
-    public BooksDbContext(DbContextOptions options) : base(options)
+    public BooksDbContext(DbContextOptions<BooksDbContext> options) : base(options)
     {
 
     }
