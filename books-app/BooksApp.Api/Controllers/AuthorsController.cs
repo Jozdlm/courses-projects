@@ -29,4 +29,39 @@ public class AuthorsController : ControllerBase
         await _context.SaveChangesAsync();
         return Ok(new { Success = true });
     }
+
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult> Put(int id, Author authorDto)
+    {
+        if (authorDto.Id != id)
+        {
+            return BadRequest(new { Message = "Must be equal the authorId with the Id provided" });
+        }
+
+        var author = await _context.Authors.FindAsync(id);
+
+        if (author == null)
+        {
+            return NotFound();
+        }
+
+        _context.Update(authorDto);
+        await _context.SaveChangesAsync();
+        return Ok(new { Success = true });
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult> Delete(int id)
+    {
+        var author = await _context.Authors.FindAsync(id);
+
+        if (author == null)
+        {
+            return NotFound();
+        }
+
+        _context.Remove(author);
+        await _context.SaveChangesAsync();
+        return Ok(new { Success = true });
+    }
 }
