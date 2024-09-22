@@ -1,3 +1,6 @@
+using BooksApp.Api.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace BooksApp.Api;
 
 public class Startup
@@ -12,6 +15,7 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllers();
+        services.AddDbContext<BooksDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
     }
