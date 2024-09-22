@@ -22,12 +22,25 @@ public class AuthorsController : ControllerBase
         return await _context.Authors.ToListAsync();
     }
 
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<List<Author>>> GetById(int id)
+    {
+        var author = await _context.Authors.Include(x => x.Books).FirstOrDefaultAsync(x => x.Id == id);
+
+        if (author == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(author);
+    }
+
     [HttpPost]
     public async Task<ActionResult> Post(Author author)
     {
         _context.Add(author);
         await _context.SaveChangesAsync();
-        return Ok(new { Success = true });
+        return CreatedAtAction(nameof(GetById), new { id = author.Id }, author);
     }
 
     [HttpPut("{id:int}")]
