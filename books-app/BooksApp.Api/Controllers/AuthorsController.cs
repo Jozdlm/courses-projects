@@ -23,7 +23,7 @@ public class AuthorsController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<List<Author>>> GetById(int id)
+    public async Task<ActionResult<Author>> GetById(int id)
     {
         var author = await _context.Authors.Include(x => x.Books).FirstOrDefaultAsync(x => x.Id == id);
 
