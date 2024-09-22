@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using BooksApp.Api.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,8 +15,14 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddControllers();
-        services.AddDbContext<BooksDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+        services.AddControllers().AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+        });
+        services.AddDbContext<BooksDbContext>(options =>
+        {
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+        });
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
     }
