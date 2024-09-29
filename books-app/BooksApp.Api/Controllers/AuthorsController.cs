@@ -38,6 +38,12 @@ public class AuthorsController : ControllerBase
     [HttpPost]
     public async Task<ActionResult> Post(Author author)
     {
+        var authorAlreadyExist = await _context.Authors.AnyAsync(x => x.Name == author.Name);
+
+        if (authorAlreadyExist) {
+            return BadRequest(new {message = $"The author with the name: {author.Name} already exists"});
+        }
+
         _context.Add(author);
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetById), new { id = author.Id }, author);
