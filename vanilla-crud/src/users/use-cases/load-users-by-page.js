@@ -1,10 +1,15 @@
+import { userDtoToModel } from "../mappers/user.mapper";
+import { User } from "../models/user";
+
 /**
  *
  * @param {Number} page
- * @returns
+ * @returns {Promise<User[]>}
  */
 export const loadUsersByPage = async (page = 1) => {
   const url = `${import.meta.env.VITE_BASE_URL}/users?_page=${page}`;
-  const response = await fetch(url);
-  return await response.json();
+  const response = await (await fetch(url)).json();
+
+  const users = response.data.map(userDtoToModel);
+  return users;
 };
