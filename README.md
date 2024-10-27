@@ -13,10 +13,11 @@ Feel free to explore the repository, each folder correspond to a project.
 
 ## Projects
 
-| Project Name                 | Course                                                                                                                         | Technology | Type      |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------- |
-| [Counter App](/counter-app/) | [React: De cero a experto](https://www.udemy.com/course/react-cero-experto/)                                                   | ReactJS    | Web       |
-| [Books App](/books-app/)     | [Construyendo Web APIs RestFul w/ ASP.Net Core 6](https://www.udemy.com/course/construyendo-web-apis-restful-con-aspnet-core/) | ASP.Net    | FullStack |
+| Project Name                   | Course                                                                                                                         | Technology | Type      |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------- |
+| [Counter App](/counter-app/)   | [React: De cero a experto](https://www.udemy.com/course/react-cero-experto/)                                                   | ReactJS    | Web       |
+| [Books App](/books-app/)       | [Construyendo Web APIs RestFul w/ ASP.Net Core 6](https://www.udemy.com/course/construyendo-web-apis-restful-con-aspnet-core/) | ASP.Net    | FullStack |
+| [Vanilla Crud](/vanilla-crud/) | [JavaScript Moderno: Guía para dominar el lenguaje](https://www.udemy.com/course/javascript-fernando-herrera/)                 | JavaScript | Web       |
 
 ## License
 
