@@ -1,0 +1,9 @@
+table {
+  background-color: rgba(0, 0, 0, 0.348);
+  border-radius: 4px;
+  padding: 4px;
+}
+
+th, td {
+  padding: 0 8px;
+}
