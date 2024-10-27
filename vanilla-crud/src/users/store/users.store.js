@@ -1,3 +1,4 @@
+import { User } from "../models/user";
 import { loadUsersByPage } from "../use-cases/load-users-by-page";
 
 const state = {
@@ -17,11 +18,27 @@ const onUserChange = () => {};
 
 const reloadPage = () => {};
 
+/**
+ *
+ * @returns {User[]}
+ */
+const getUsers = () => {
+  return [...state.users];
+};
+
+/**
+ *
+ * @returns {number}
+ */
+const getCurrentPage = () => {
+  return state.currentPage;
+};
+
 export default {
   loadNextPage,
   loadPrevPage,
   onUserChange,
   reloadPage,
-  getUser: () => [...state.users],
-  getCurrentPage: () => state.currentPage,
+  getUsers,
+  getCurrentPage,
 };
