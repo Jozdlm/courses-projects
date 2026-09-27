@@ -1,4 +1,3 @@
-// @ts-expect-error CSS imports are handled by Next.js, but may lack TS declarations.
 import "@/app/ui/global.css";
 
 import { inter } from "@/app/ui/fonts";
