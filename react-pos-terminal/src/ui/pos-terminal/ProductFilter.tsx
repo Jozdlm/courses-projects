@@ -20,7 +20,7 @@ export default function ProductFilter() {
   );
 
   return (
-    <div className="flex w-fit gap-2 rounded-xl bg-white p-4">
+    <div className="flex w-full gap-2 rounded-xl bg-white p-4">
       {filterItems.map((item) => (
         <button
           className={clsx(
