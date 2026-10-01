@@ -23,7 +23,8 @@ export default function Tabs() {
             className={clsx(
               "cursor-pointer rounded-[14px] px-2 py-1 font-medium text-[#5d5d5d] transition-colors ease-in",
               {
-                "bg-white text-black": selectedTab === tab.label,
+                "bg-white text-black transition-colors ease-out":
+                  selectedTab === tab.label,
               },
             )}
             onClick={() => setSelectedTab(tab.label)}
