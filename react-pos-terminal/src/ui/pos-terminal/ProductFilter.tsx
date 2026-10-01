@@ -20,11 +20,11 @@ export default function ProductFilter() {
   );
 
   return (
-    <div className="flex w-full gap-2 rounded-xl bg-white p-4">
+    <div className="flex w-full gap-2 rounded-xl border border-gray-200 bg-white p-4">
       {filterItems.map((item) => (
         <button
           className={clsx(
-            "cursor-pointer rounded-lg border border-gray-300 px-4 py-2 text-sm font-medium transition-colors ease-in",
+            "cursor-pointer rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium transition-colors ease-in",
             {
               "border-transparent bg-[#030213] text-white transition-colors ease-out":
                 item.name === selectedCategory,
