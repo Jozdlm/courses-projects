@@ -4,9 +4,8 @@ export default function ProductList() {
   return (
     <div className="grid grid-cols-4 gap-4">
       {products.map((product) => (
-        // TODO: Change the key to product.id
         <div
-          key={product.name}
+          key={product.id}
           className="flex flex-col gap-3 rounded-xl border border-gray-200 bg-white p-4"
         >
           <img
