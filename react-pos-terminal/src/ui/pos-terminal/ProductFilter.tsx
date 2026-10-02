@@ -1,9 +1,6 @@
+import type { Category } from "@/lib/types";
 import clsx from "clsx";
 import { useState } from "react";
-
-interface Category {
-  name: string;
-}
 
 const categories: Category[] = [
   { name: "Coffe" },
