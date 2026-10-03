@@ -1,4 +1,6 @@
 import { products } from "@/lib/placeholder-data";
+import Button from "@/ui/Button";
+import { Plus } from "lucide-react";
 
 export default function ProductList() {
   return (
@@ -22,10 +24,13 @@ export default function ProductList() {
               ${product.price}
             </p>
           </div>
-          <button className="mt-auto flex w-full cursor-pointer justify-center gap-4 rounded-lg bg-[#030213] px-3 py-2 text-sm font-medium text-white">
-            <span>+</span>
+          <Button
+            variant="filled"
+            className="mt-auto flex w-full items-center justify-center gap-4"
+          >
+            <Plus className="h-4 w-4" />
             <span>Add to cart</span>
-          </button>
+          </Button>
         </div>
       ))}
     </div>

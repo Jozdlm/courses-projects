@@ -1,4 +1,5 @@
 import { Minus, Plus, ShoppingCart, Trash } from "lucide-react";
+import Button from "../Button";
 
 export default function Cart() {
   return (
@@ -8,9 +9,9 @@ export default function Cart() {
           <ShoppingCart className="w-5" />
           <p className="text-base leading-6 font-normal">Current Order</p>
         </div>
-        <button className="cursor-pointer px-3 py-1.5 text-sm font-medium">
+        <Button variant="ghost" className="px-3 py-1.5">
           Clear
-        </button>
+        </Button>
       </div>
       <div>
         <div className="mb-4 flex justify-between gap-3 rounded-xl bg-[#F9FAFB] p-3">
@@ -19,20 +20,20 @@ export default function Cart() {
             <p className="text-sm font-normal text-[#4A5565]">$3.25</p>
           </div>
           <div className="flex gap-2">
-            <button className="cursor-pointer rounded-lg border border-gray-300 p-2">
+            <Button variant="outline" className="bg-transparent p-2">
               <Minus className="h-4" />
-            </button>
+            </Button>
             <input
               type="text"
               value={1}
               className="w-16 rounded-lg bg-[#F3F3F5] text-center"
             />
-            <button className="cursor-pointer rounded-lg border border-gray-300 p-2">
+            <Button variant="outline" className="bg-transparent p-2">
               <Plus className="h-4" />
-            </button>
-            <button className="cursor-pointer p-2">
+            </Button>
+            <Button variant="ghost" className="p-2">
               <Trash className="h-4 text-[#FB2C36]" />
-            </button>
+            </Button>
           </div>
         </div>
         <div className="border-t border-t-gray-300 pt-4">
@@ -50,9 +51,9 @@ export default function Cart() {
           </div>
         </div>
       </div>
-      <button className="w-full cursor-pointer rounded-lg bg-[#030213] py-3 text-[white]">
+      <Button variant="filled" className="w-full py-3">
         Checkout - $3.51
-      </button>
+      </Button>
     </section>
   );
 }

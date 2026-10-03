@@ -1,7 +1,7 @@
 import type { Category } from "@/lib/types";
-import clsx from "clsx";
 import { Search } from "lucide-react";
 import { useState } from "react";
+import Button from "../Button";
 
 const categories: Category[] = [
   { name: "Coffe" },
@@ -30,18 +30,13 @@ export default function ProductFilter() {
       </div>
       <div className="flex gap-2">
         {filterItems.map((item) => (
-          <button
-            className={clsx(
-              "cursor-pointer rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium transition-colors ease-in",
-              {
-                "border-transparent bg-[#030213] text-white transition-colors ease-out":
-                  item.name === selectedCategory,
-              },
-            )}
+          <Button
+            key={item.name}
+            variant={item.name === selectedCategory ? "filled" : "outline"}
             onClick={() => setSelectedCategory(item.name)}
           >
             {item.name}
-          </button>
+          </Button>
         ))}
       </div>
     </div>
