@@ -3,8 +3,8 @@ import Button from "../Button";
 
 interface Props {
   categories: Category[];
-  selectedCategory: string;
-  onSelect: (categoryId: string) => void;
+  selectedCategory: string | null;
+  onSelect: (categoryId: string | null) => void;
 }
 
 export default function CategoryFilter({
@@ -15,8 +15,8 @@ export default function CategoryFilter({
   return (
     <div className="flex gap-2">
       <Button
-        variant={"All" === selectedCategory ? "filled" : "outline"}
-        onClick={() => onSelect("All")}
+        variant={selectedCategory === null ? "filled" : "outline"}
+        onClick={() => onSelect(null)}
       >
         All
       </Button>

@@ -7,14 +7,20 @@ import { Search } from "lucide-react";
 import { useState } from "react";
 
 export default function POSTerminal() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
-
   const products: Product[] = getProductList();
   const categories: Category[] = getCategoryList();
 
-  function handleSelectCategory(option: string) {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  function handleSelectCategory(option: string | null) {
     setSelectedCategory(option);
   }
+
+  const filteredProducts = products.filter((product) => {
+    if (selectedCategory === null) return true;
+    if (selectedCategory === product.category.id) return true;
+    return false;
+  });
 
   return (
     <section className="grid grid-cols-[1fr_400px] gap-6">
@@ -35,7 +41,7 @@ export default function POSTerminal() {
             onSelect={handleSelectCategory}
           />
         </div>
-        <ProductList products={products} />
+        <ProductList products={filteredProducts} />
       </div>
       <Cart />
     </section>
