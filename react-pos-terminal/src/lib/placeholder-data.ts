@@ -1,4 +1,11 @@
-import type { Product } from "./types";
+import type { Category, Product } from "./types";
+
+export const categories: Category[] = [
+  { id: "a1b2c3d4-1111-4a1b-8c2d-3e4f5a6b7c8d", name: "Coffe" },
+  { id: "b2c3d4e5-2222-4b2c-9d3e-4f5a6b7c8d9e", name: "Pastry" },
+  { id: "c3d4e5f6-3333-4c3d-8e4f-5a6b7c8d9e0f", name: "Food" },
+  { id: "d4e5f6a7-4444-4d4e-9f5a-6b7c8d9e0f1a", name: "Beverage" },
+];
 
 export const products: Product[] = [
   // Coffe

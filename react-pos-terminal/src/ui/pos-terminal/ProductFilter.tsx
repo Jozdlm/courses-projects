@@ -3,19 +3,16 @@ import { Search } from "lucide-react";
 import { useState } from "react";
 import Button from "../Button";
 
-const categories: Category[] = [
-  { name: "Coffe" },
-  { name: "Pastry" },
-  { name: "Food" },
-  { name: "Beverage" },
-];
+interface Props {
+  categories: Category[];
+}
 
-export default function ProductFilter() {
-  const defaultOption: Category = { name: "All" };
-  const filterItems: Category[] = [defaultOption, ...categories];
-  const [selectedCategory, setSelectedCategory] = useState<string>(
-    defaultOption.name,
-  );
+export default function ProductFilter({ categories }: Props) {
+  const defaultOption: string = "All";
+  const categoriesName: string[] = categories.map((item) => item.name);
+  const filterItems: string[] = [defaultOption, ...categoriesName];
+  const [selectedCategory, setSelectedCategory] =
+    useState<string>(defaultOption);
 
   return (
     <div className="rounded-xl border border-gray-200 bg-white p-4">
@@ -31,11 +28,11 @@ export default function ProductFilter() {
       <div className="flex gap-2">
         {filterItems.map((item) => (
           <Button
-            key={item.name}
-            variant={item.name === selectedCategory ? "filled" : "outline"}
-            onClick={() => setSelectedCategory(item.name)}
+            key={item}
+            variant={item === selectedCategory ? "filled" : "outline"}
+            onClick={() => setSelectedCategory(item)}
           >
-            {item.name}
+            {item}
           </Button>
         ))}
       </div>

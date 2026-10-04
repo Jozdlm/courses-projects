@@ -1,6 +1,10 @@
-import { products } from "./placeholder-data";
-import type { Product } from "./types";
+import { categories, products } from "./placeholder-data";
+import type { Category, Product } from "./types";
 
 export function getProductList(): Product[] {
-  return products;
+  return [...products];
+}
+
+export function getCategoryList(): Category[] {
+  return [...categories];
 }
