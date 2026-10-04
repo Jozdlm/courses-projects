@@ -12,9 +12,14 @@ export default function CategoryFilter({
   selectedCategory,
   onSelect,
 }: Props) {
-  categories = [{ id: "All", name: "All" }, ...categories];
   return (
     <div className="flex gap-2">
+      <Button
+        variant={"All" === selectedCategory ? "filled" : "outline"}
+        onClick={() => onSelect("All")}
+      >
+        All
+      </Button>
       {categories.map((category) => (
         <Button
           key={category.id}
