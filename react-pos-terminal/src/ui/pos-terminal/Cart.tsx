@@ -25,7 +25,7 @@ export default function Cart() {
             </Button>
             <input
               type="text"
-              value={1}
+              defaultValue={1}
               className="w-16 rounded-lg bg-[#F3F3F5] text-center"
             />
             <Button variant="outline" className="bg-transparent p-2">
