@@ -4,10 +4,17 @@ import Cart from "@/ui/pos-terminal/Cart";
 import CategoryFilter from "@/ui/pos-terminal/CategoryFilter";
 import ProductList from "@/ui/pos-terminal/ProductList";
 import { Search } from "lucide-react";
+import { useState } from "react";
 
 export default function POSTerminal() {
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+
   const products: Product[] = getProductList();
   const categories: Category[] = getCategoryList();
+
+  function handleSelectCategory(option: string) {
+    setSelectedCategory(option);
+  }
 
   return (
     <section className="grid grid-cols-[1fr_400px] gap-6">
@@ -22,7 +29,11 @@ export default function POSTerminal() {
               className="min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-[#99A1AF]"
             />
           </div>
-          <CategoryFilter categories={categories} />
+          <CategoryFilter
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onSelect={handleSelectCategory}
+          />
         </div>
         <ProductList products={products} />
       </div>

@@ -1,27 +1,27 @@
 import type { Category } from "@/lib/types";
-import { useState } from "react";
 import Button from "../Button";
 
 interface Props {
   categories: Category[];
+  selectedCategory: string;
+  onSelect: (categoryId: string) => void;
 }
 
-export default function CategoryFilter({ categories }: Props) {
-  const defaultOption: string = "All";
-  const categoriesName: string[] = categories.map((item) => item.name);
-  const filterItems: string[] = [defaultOption, ...categoriesName];
-  const [selectedCategory, setSelectedCategory] =
-    useState<string>(defaultOption);
-
+export default function CategoryFilter({
+  categories,
+  selectedCategory,
+  onSelect,
+}: Props) {
+  categories = [{ id: "All", name: "All" }, ...categories];
   return (
     <div className="flex gap-2">
-      {filterItems.map((item) => (
+      {categories.map((category) => (
         <Button
-          key={item}
-          variant={item === selectedCategory ? "filled" : "outline"}
-          onClick={() => setSelectedCategory(item)}
+          key={category.id}
+          variant={category.id === selectedCategory ? "filled" : "outline"}
+          onClick={() => onSelect(category.id)}
         >
-          {item}
+          {category.name}
         </Button>
       ))}
     </div>
