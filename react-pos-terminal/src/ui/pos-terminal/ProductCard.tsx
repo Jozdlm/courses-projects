@@ -20,7 +20,7 @@ export default function ProductCard({ product }: Props) {
       <div>
         <p className="text-lg font-medium">{product.name}</p>
         <p className="mb-3 text-sm font-normal text-[#6A7282]">
-          {product.category}
+          {product.category.name}
         </p>
         <p className="text-base font-medium text-[#00A63E]">${product.price}</p>
       </div>

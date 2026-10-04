@@ -21,6 +21,7 @@ export default function Tabs() {
         <div className="w-fit rounded-2xl bg-[#ECECF0] p-1 text-sm leading-5">
           {tabs.map((tab) => (
             <button
+              key={tab.label}
               className={clsx(
                 "cursor-pointer rounded-[14px] px-2 py-1 font-medium text-[#5d5d5d] transition-colors ease-in",
                 {
