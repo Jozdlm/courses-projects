@@ -1,37 +1,11 @@
 import { products } from "@/lib/placeholder-data";
-import Button from "@/ui/Button";
-import { Plus } from "lucide-react";
+import ProductCard from "./ProductCard";
 
 export default function ProductList() {
   return (
     <div className="grid grid-cols-4 gap-4">
       {products.map((product) => (
-        <div
-          key={product.id}
-          className="flex flex-col gap-3 rounded-xl border border-gray-200 bg-white p-4"
-        >
-          <img
-            src={product.imgUrl}
-            alt={product.name}
-            className="h-40 w-full rounded-lg object-cover"
-          />
-          <div>
-            <p className="text-lg font-medium">{product.name}</p>
-            <p className="mb-3 text-sm font-normal text-[#6A7282]">
-              {product.category}
-            </p>
-            <p className="text-base font-medium text-[#00A63E]">
-              ${product.price}
-            </p>
-          </div>
-          <Button
-            variant="filled"
-            className="mt-auto flex w-full items-center justify-center gap-4"
-          >
-            <Plus className="h-4 w-4" />
-            <span>Add to cart</span>
-          </Button>
-        </div>
+        <ProductCard product={product} />
       ))}
     </div>
   );
