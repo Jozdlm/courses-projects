@@ -1,11 +1,11 @@
 import "./App.css";
-import Topbar from "@/ui/Topbar";
 import POSTerminal from "./pages/POSTerminal";
+import Header from "./ui/Header";
 
 function App() {
   return (
     <div className="bg-[#F9FAFB]">
-      <Topbar />
+      <Header />
       <main className="mb-8 flex w-full justify-center">
         <div className="w-full max-w-7xl">
           {/* Add Pages/Tabs Here */}
