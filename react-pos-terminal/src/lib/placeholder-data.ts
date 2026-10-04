@@ -1,11 +1,14 @@
 import type { Category, Product } from "./types";
 
+// Don't change the order as this will affect the product list
 export const categories: Category[] = [
   { id: "a1b2c3d4-1111-4a1b-8c2d-3e4f5a6b7c8d", name: "Coffe" },
   { id: "b2c3d4e5-2222-4b2c-9d3e-4f5a6b7c8d9e", name: "Pastry" },
   { id: "c3d4e5f6-3333-4c3d-8e4f-5a6b7c8d9e0f", name: "Food" },
   { id: "d4e5f6a7-4444-4d4e-9f5a-6b7c8d9e0f1a", name: "Beverage" },
 ];
+
+const [coffee, pastry, food, beverage] = categories;
 
 export const products: Product[] = [
   // Coffe
@@ -14,7 +17,7 @@ export const products: Product[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400",
     name: "Espresso",
-    category: "Coffe",
+    category: coffee,
     price: 2.5,
   },
   {
@@ -22,14 +25,14 @@ export const products: Product[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400",
     name: "Cappuccino",
-    category: "Coffe",
+    category: coffee,
     price: 3.75,
   },
   {
     id: "c5f3e4d6-7d8a-4c9b-8e1f-2a3b4c5d6e7f",
     imgUrl: "https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=400",
     name: "Latte",
-    category: "Coffe",
+    category: coffee,
     price: 4.0,
   },
   {
@@ -37,7 +40,7 @@ export const products: Product[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?w=400",
     name: "Americano",
-    category: "Coffe",
+    category: coffee,
     price: 3.0,
   },
 
@@ -46,7 +49,7 @@ export const products: Product[] = [
     id: "e7b5a6f8-9f0c-4e1d-8a3b-4c5d6e7f8091",
     imgUrl: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400",
     name: "Butter Croissant",
-    category: "Pastry",
+    category: pastry,
     price: 3.25,
   },
   {
@@ -54,7 +57,7 @@ export const products: Product[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=400",
     name: "Chocolate Chip Cookie",
-    category: "Pastry",
+    category: pastry,
     price: 2.0,
   },
   {
@@ -62,7 +65,7 @@ export const products: Product[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=400",
     name: "Blueberry Muffin",
-    category: "Pastry",
+    category: pastry,
     price: 3.5,
   },
   {
@@ -70,7 +73,7 @@ export const products: Product[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?w=400",
     name: "Cinnamon Roll",
-    category: "Pastry",
+    category: pastry,
     price: 4.25,
   },
 
@@ -80,7 +83,7 @@ export const products: Product[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400",
     name: "Turkey Club Sandwich",
-    category: "Food",
+    category: food,
     price: 8.5,
   },
   {
@@ -88,7 +91,7 @@ export const products: Product[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=400",
     name: "Avocado Toast",
-    category: "Food",
+    category: food,
     price: 7.25,
   },
   {
@@ -96,7 +99,7 @@ export const products: Product[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400",
     name: "Garden Salad",
-    category: "Food",
+    category: food,
     price: 6.75,
   },
   {
@@ -104,7 +107,7 @@ export const products: Product[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1481070555726-e2fe8357725c?w=400",
     name: "Breakfast Bagel",
-    category: "Food",
+    category: food,
     price: 6.0,
   },
 
@@ -114,28 +117,28 @@ export const products: Product[] = [
     imgUrl:
       "https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=400",
     name: "Fresh Orange Juice",
-    category: "Beverage",
+    category: beverage,
     price: 4.5,
   },
   {
     id: "704e3f21-2895-4bba-9dc4-d5e6f708192a",
     imgUrl: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400",
     name: "Iced Tea",
-    category: "Beverage",
+    category: beverage,
     price: 3.25,
   },
   {
     id: "815f4032-39a6-4cca-8ed5-e6f708192a3b",
     imgUrl: "https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=400",
     name: "Strawberry Smoothie",
-    category: "Beverage",
+    category: beverage,
     price: 5.5,
   },
   {
     id: "92605143-4ab7-4ddb-9fe6-f708192a3b4c",
     imgUrl: "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400",
     name: "Sparkling Lemonade",
-    category: "Beverage",
+    category: beverage,
     price: 3.75,
   },
 ];
