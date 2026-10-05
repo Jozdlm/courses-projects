@@ -23,3 +23,11 @@ export interface Cart {
   tax: number;
   total: number;
 }
+
+export interface MerchantProfile {
+  id: string;
+  name: string;
+  currency: string;
+  country: string;
+  tax: number;
+}

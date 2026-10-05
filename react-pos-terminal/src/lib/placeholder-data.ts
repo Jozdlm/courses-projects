@@ -1,4 +1,4 @@
-import type { Category, Product } from "./types";
+import type { Category, MerchantProfile, Product } from "./types";
 
 // Don't change the order as this will affect the product list
 export const categories: Category[] = [
@@ -142,3 +142,11 @@ export const products: Product[] = [
     price: 3.75,
   },
 ];
+
+export const merchantProfile: MerchantProfile = {
+  id: "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47",
+  name: "Libreria La Joya",
+  currency: "GTQ",
+  country: "Guatemala",
+  tax: 0.12,
+};

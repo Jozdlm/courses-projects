@@ -1,5 +1,5 @@
-import { categories, products } from "./placeholder-data";
-import type { Category, Product } from "./types";
+import { categories, merchantProfile, products } from "./placeholder-data";
+import type { Category, MerchantProfile, Product } from "./types";
 
 export function getProductList(): Product[] {
   return [...products];
@@ -7,4 +7,8 @@ export function getProductList(): Product[] {
 
 export function getCategoryList(): Category[] {
   return [...categories];
+}
+
+export function getMerchantProfile(): MerchantProfile {
+  return { ...merchantProfile };
 }
