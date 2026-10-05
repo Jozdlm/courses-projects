@@ -1,5 +1,5 @@
 import { getCategoryList, getProductList } from "@/lib/actions";
-import type { Category, Product } from "@/lib/types";
+import type { CartItem, Category, Product } from "@/lib/types";
 import Cart from "@/ui/pos-terminal/Cart";
 import CategoryFilter from "@/ui/pos-terminal/CategoryFilter";
 import ProductList from "@/ui/pos-terminal/ProductList";
@@ -12,6 +12,26 @@ export default function POSTerminal() {
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [query, setQuery] = useState<string>("");
+
+  // CART
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const subtotal = cartItems.reduce(
+    (acc, curr) => acc + curr.quantity * curr.unitPrice,
+    0,
+  );
+  const tax = subtotal * 0.12;
+  const total = subtotal + tax;
+
+  function handleAddToCart(product: Product) {
+    const cartItem: CartItem = {
+      product,
+      quantity: 1,
+      unitPrice: product.price,
+    };
+    setCartItems((prev) => [...prev, cartItem]);
+  }
+
+  // FILTERS
 
   function handleSelectCategory(option: string | null) {
     setSelectedCategory(option);
@@ -33,7 +53,7 @@ export default function POSTerminal() {
 
   return (
     <section className="grid grid-cols-[1fr_400px] gap-6">
-      <div className="grid grid-flow-row grid-rows-[content-fit_1fr] gap-4">
+      <div className="grid grid-flow-row grid-rows-[min-content_1fr] gap-4">
         <div className="rounded-xl border border-gray-200 bg-white p-4">
           <SearchBar value={query} onSearch={handleSearchProduct} />
           <CategoryFilter
@@ -42,9 +62,12 @@ export default function POSTerminal() {
             onSelect={handleSelectCategory}
           />
         </div>
-        <ProductList products={filteredProducts} />
+        <ProductList
+          products={filteredProducts}
+          onAddToCart={handleAddToCart}
+        />
       </div>
-      <Cart />
+      <Cart cartItems={cartItems} />
     </section>
   );
 }

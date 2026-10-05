@@ -10,3 +10,16 @@ export interface Category {
   id: string;
   name: string;
 }
+
+export interface CartItem {
+  product: Product;
+  unitPrice: number;
+  quantity: number;
+}
+
+export interface Cart {
+  items: CartItem[];
+  subtotal: number;
+  tax: number;
+  total: number;
+}

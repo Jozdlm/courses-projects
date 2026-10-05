@@ -4,9 +4,10 @@ import { Plus } from "lucide-react";
 
 interface Props {
   product: Product;
+  onAddToCart: (item: Product) => void;
 }
 
-export default function ProductCard({ product }: Props) {
+export default function ProductCard({ product, onAddToCart }: Props) {
   return (
     <div
       key={product.id}
@@ -27,6 +28,7 @@ export default function ProductCard({ product }: Props) {
       <Button
         variant="filled"
         className="mt-auto flex w-full items-center justify-center gap-4"
+        onClick={() => onAddToCart(product)}
       >
         <Plus className="h-4 w-4" />
         <span>Add to cart</span>
