@@ -42,6 +42,10 @@ export default function POSTerminal() {
     setCartItems((prev) => [...prev, cartItem]);
   }
 
+  function handleRemoveItem(productId: string) {
+    setCartItems(cartItems.filter((item) => item.product.id != productId));
+  }
+
   function handleClearCart() {
     setCartItems([]);
   }
@@ -85,6 +89,7 @@ export default function POSTerminal() {
       <OrderSummary
         cart={cart}
         onClearCart={handleClearCart}
+        onRemoveItem={handleRemoveItem}
         merchantTax={merchantTax}
       />
     </section>

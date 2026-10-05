@@ -7,11 +7,13 @@ interface Props {
   cart: Cart;
   merchantTax: number;
   onClearCart: () => void;
+  onRemoveItem: (productId: string) => void;
 }
 
 export default function OrderSummary({
   cart,
   onClearCart,
+  onRemoveItem,
   merchantTax,
 }: Props) {
   return (
@@ -47,7 +49,11 @@ export default function OrderSummary({
                 <Button variant="outline" className="bg-transparent p-2">
                   <Plus className="h-4" />
                 </Button>
-                <Button variant="ghost" className="p-2">
+                <Button
+                  variant="ghost"
+                  className="p-2"
+                  onClick={() => onRemoveItem(item.product.id)}
+                >
                   <Trash className="h-4 text-[#FB2C36]" />
                 </Button>
               </div>
