@@ -1,12 +1,14 @@
 import { Minus, Plus, ShoppingCart, Trash } from "lucide-react";
 import Button from "../Button";
 import type { CartItem } from "@/lib/types";
+import { formatPercent } from "@/lib/utils";
 
 interface Props {
   cartItems: CartItem[];
   subtotal: number;
   tax: number;
   total: number;
+  merchantTax: number;
   onClearCart: () => void;
 }
 
@@ -16,6 +18,7 @@ export default function Cart({
   subtotal,
   tax,
   total,
+  merchantTax,
 }: Props) {
   return (
     <section className="grid grid-rows-[auto_1fr_auto] gap-6 self-start rounded-xl border border-gray-200 bg-white p-6">
@@ -63,7 +66,7 @@ export default function Cart({
             <p>${subtotal}</p>
           </div>
           <div className="flex items-center justify-between border-b border-b-gray-300 pb-2">
-            <p className="text-[#4A5565]">Tax (8%)</p>
+            <p className="text-[#4A5565]">Tax ({formatPercent(merchantTax)})</p>
             <p>${tax}</p>
           </div>
           <div className="flex items-center justify-between pt-2">

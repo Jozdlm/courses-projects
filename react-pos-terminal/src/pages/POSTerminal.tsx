@@ -1,4 +1,8 @@
-import { getCategoryList, getProductList } from "@/lib/actions";
+import {
+  getCategoryList,
+  getMerchantProfile,
+  getProductList,
+} from "@/lib/actions";
 import type { CartItem, Category, Product } from "@/lib/types";
 import Cart from "@/ui/pos-terminal/Cart";
 import CategoryFilter from "@/ui/pos-terminal/CategoryFilter";
@@ -9,6 +13,7 @@ import { useState } from "react";
 export default function POSTerminal() {
   const products: Product[] = getProductList();
   const categories: Category[] = getCategoryList();
+  const merchantTax: number = getMerchantProfile().tax;
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [query, setQuery] = useState<string>("");
@@ -19,7 +24,7 @@ export default function POSTerminal() {
     (acc, curr) => acc + curr.quantity * curr.unitPrice,
     0,
   );
-  const tax = subtotal * 0.12;
+  const tax = subtotal * merchantTax;
   const total = subtotal + tax;
 
   function handleAddToCart(product: Product) {
@@ -77,6 +82,7 @@ export default function POSTerminal() {
         subtotal={subtotal}
         tax={tax}
         total={total}
+        merchantTax={merchantTax}
       />
     </section>
   );
