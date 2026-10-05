@@ -76,7 +76,7 @@ export default function OrderSummary({
         </div>
       </div>
       <Button variant="filled" className="w-full py-3">
-        Checkout - $3.51
+        Checkout - ${cart.total}
       </Button>
     </section>
   );
