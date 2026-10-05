@@ -71,7 +71,13 @@ export default function POSTerminal() {
           onAddToCart={handleAddToCart}
         />
       </div>
-      <Cart cartItems={cartItems} onClearCart={handleClearCart} />
+      <Cart
+        cartItems={cartItems}
+        onClearCart={handleClearCart}
+        subtotal={subtotal}
+        tax={tax}
+        total={total}
+      />
     </section>
   );
 }

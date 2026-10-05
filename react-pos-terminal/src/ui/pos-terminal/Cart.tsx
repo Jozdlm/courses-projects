@@ -4,10 +4,19 @@ import type { CartItem } from "@/lib/types";
 
 interface Props {
   cartItems: CartItem[];
+  subtotal: number;
+  tax: number;
+  total: number;
   onClearCart: () => void;
 }
 
-export default function Cart({ cartItems, onClearCart }: Props) {
+export default function Cart({
+  cartItems,
+  onClearCart,
+  subtotal,
+  tax,
+  total,
+}: Props) {
   return (
     <section className="grid grid-rows-[auto_1fr_auto] gap-6 self-start rounded-xl border border-gray-200 bg-white p-6">
       <div className="flex items-center justify-between">
@@ -51,15 +60,15 @@ export default function Cart({ cartItems, onClearCart }: Props) {
         <div className="border-t border-t-gray-300 pt-4">
           <div className="mb-2 flex items-center justify-between">
             <p className="text-[#4A5565]">Subtotal</p>
-            <p>$3.25</p>
+            <p>${subtotal}</p>
           </div>
           <div className="flex items-center justify-between border-b border-b-gray-300 pb-2">
             <p className="text-[#4A5565]">Tax (8%)</p>
-            <p>$0.26</p>
+            <p>${tax}</p>
           </div>
           <div className="flex items-center justify-between pt-2">
             <p>Total</p>
-            <p className="text-[#00A63E]">$3.51</p>
+            <p className="text-[#00A63E]">${total}</p>
           </div>
         </div>
       </div>
