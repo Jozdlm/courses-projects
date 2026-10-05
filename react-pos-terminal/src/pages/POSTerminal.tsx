@@ -3,8 +3,8 @@ import {
   getMerchantProfile,
   getProductList,
 } from "@/lib/actions";
-import type { CartItem, Category, Product } from "@/lib/types";
-import Cart from "@/ui/pos-terminal/Cart";
+import type { Cart, CartItem, Category, Product } from "@/lib/types";
+import OrderSummary from "@/ui/pos-terminal/Cart";
 import CategoryFilter from "@/ui/pos-terminal/CategoryFilter";
 import ProductList from "@/ui/pos-terminal/ProductList";
 import SearchBar from "@/ui/SearchBar";
@@ -26,6 +26,12 @@ export default function POSTerminal() {
   );
   const tax = subtotal * merchantTax;
   const total = subtotal + tax;
+  const cart: Cart = {
+    items: cartItems,
+    subtotal,
+    tax,
+    total,
+  };
 
   function handleAddToCart(product: Product) {
     const cartItem: CartItem = {
@@ -76,12 +82,9 @@ export default function POSTerminal() {
           onAddToCart={handleAddToCart}
         />
       </div>
-      <Cart
-        cartItems={cartItems}
+      <OrderSummary
+        cart={cart}
         onClearCart={handleClearCart}
-        subtotal={subtotal}
-        tax={tax}
-        total={total}
         merchantTax={merchantTax}
       />
     </section>

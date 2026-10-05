@@ -1,23 +1,17 @@
 import { Minus, Plus, ShoppingCart, Trash } from "lucide-react";
 import Button from "../Button";
-import type { CartItem } from "@/lib/types";
+import type { Cart } from "@/lib/types";
 import { formatPercent } from "@/lib/utils";
 
 interface Props {
-  cartItems: CartItem[];
-  subtotal: number;
-  tax: number;
-  total: number;
+  cart: Cart;
   merchantTax: number;
   onClearCart: () => void;
 }
 
-export default function Cart({
-  cartItems,
+export default function OrderSummary({
+  cart,
   onClearCart,
-  subtotal,
-  tax,
-  total,
   merchantTax,
 }: Props) {
   return (
@@ -33,7 +27,7 @@ export default function Cart({
       </div>
       <div>
         <div className="mb-4 flex flex-col gap-3">
-          {cartItems.map((item) => (
+          {cart.items.map((item) => (
             <div className="flex justify-between rounded-xl bg-[#F9FAFB] p-3">
               <div>
                 <p className="text-base font-medium">{item.product.name}</p>
@@ -63,15 +57,15 @@ export default function Cart({
         <div className="border-t border-t-gray-300 pt-4">
           <div className="mb-2 flex items-center justify-between">
             <p className="text-[#4A5565]">Subtotal</p>
-            <p>${subtotal}</p>
+            <p>${cart.subtotal}</p>
           </div>
           <div className="flex items-center justify-between border-b border-b-gray-300 pb-2">
             <p className="text-[#4A5565]">Tax ({formatPercent(merchantTax)})</p>
-            <p>${tax}</p>
+            <p>${cart.tax}</p>
           </div>
           <div className="flex items-center justify-between pt-2">
             <p>Total</p>
-            <p className="text-[#00A63E]">${total}</p>
+            <p className="text-[#00A63E]">${cart.total}</p>
           </div>
         </div>
       </div>
