@@ -4,7 +4,7 @@ import {
   getProductList,
 } from "@/lib/actions";
 import type { Cart, CartItem, Category, Product } from "@/lib/types";
-import OrderSummary from "@/ui/pos-terminal/Cart";
+import OrderSummary from "@/ui/pos-terminal/OrderSummary";
 import CategoryFilter from "@/ui/pos-terminal/CategoryFilter";
 import ProductList from "@/ui/pos-terminal/ProductList";
 import SearchBar from "@/ui/SearchBar";
