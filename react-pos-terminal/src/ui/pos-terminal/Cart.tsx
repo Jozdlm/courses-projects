@@ -4,9 +4,10 @@ import type { CartItem } from "@/lib/types";
 
 interface Props {
   cartItems: CartItem[];
+  onClearCart: () => void;
 }
 
-export default function Cart({ cartItems }: Props) {
+export default function Cart({ cartItems, onClearCart }: Props) {
   return (
     <section className="grid grid-rows-[auto_1fr_auto] gap-6 self-start rounded-xl border border-gray-200 bg-white p-6">
       <div className="flex items-center justify-between">
@@ -14,7 +15,7 @@ export default function Cart({ cartItems }: Props) {
           <ShoppingCart className="w-5" />
           <p className="text-base leading-6 font-normal">Current Order</p>
         </div>
-        <Button variant="ghost" className="px-3 py-1.5">
+        <Button variant="ghost" className="px-3 py-1.5" onClick={onClearCart}>
           Clear
         </Button>
       </div>

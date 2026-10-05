@@ -31,6 +31,10 @@ export default function POSTerminal() {
     setCartItems((prev) => [...prev, cartItem]);
   }
 
+  function handleClearCart() {
+    setCartItems([]);
+  }
+
   // FILTERS
 
   function handleSelectCategory(option: string | null) {
@@ -67,7 +71,7 @@ export default function POSTerminal() {
           onAddToCart={handleAddToCart}
         />
       </div>
-      <Cart cartItems={cartItems} />
+      <Cart cartItems={cartItems} onClearCart={handleClearCart} />
     </section>
   );
 }
