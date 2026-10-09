@@ -44,6 +44,7 @@ export default function OrderSummary({
                 <input
                   type="text"
                   defaultValue={1}
+                  value={item.quantity}
                   className="w-16 rounded-lg bg-[#F3F3F5] text-center"
                 />
                 <Button variant="outline" className="bg-transparent p-2">

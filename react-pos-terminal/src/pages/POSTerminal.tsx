@@ -34,12 +34,22 @@ export default function POSTerminal() {
   };
 
   function handleAddToCart(product: Product) {
-    const cartItem: CartItem = {
-      product,
-      quantity: 1,
-      unitPrice: product.price,
-    };
-    setCartItems((prev) => [...prev, cartItem]);
+    const isItemOnCart = cartItems.find(
+      (item) => item.product.id === product.id,
+    );
+    const unitPrice = product.price;
+    let quantity = 1;
+
+    if (isItemOnCart) {
+      const filteredCart = cartItems.filter(
+        (item) => item.product.id !== product.id,
+      );
+
+      quantity = isItemOnCart.quantity + 1;
+      setCartItems([...filteredCart, { product, unitPrice, quantity }]);
+    } else {
+      setCartItems((prev) => [...prev, { product, unitPrice, quantity }]);
+    }
   }
 
   function handleRemoveItem(productId: string) {
