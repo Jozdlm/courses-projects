@@ -52,6 +52,18 @@ export default function POSTerminal() {
     }
   }
 
+  function handleIncreaseQty(productId: string, newQty: number) {
+    const cartItem = cartItems.find((item) => item.product.id === productId);
+    if (!cartItem || newQty < 1) return;
+
+    cartItem.quantity = newQty;
+
+    const filteredCart = cartItems.filter(
+      (item) => item.product.id !== productId,
+    );
+    setCartItems([...filteredCart, cartItem]);
+  }
+
   function handleRemoveItem(productId: string) {
     setCartItems(cartItems.filter((item) => item.product.id != productId));
   }
@@ -100,6 +112,7 @@ export default function POSTerminal() {
         cart={cart}
         onClearCart={handleClearCart}
         onRemoveItem={handleRemoveItem}
+        onIncreaseQty={handleIncreaseQty}
         merchantTax={merchantTax}
       />
     </section>
