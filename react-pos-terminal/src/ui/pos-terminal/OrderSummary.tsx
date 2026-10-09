@@ -8,7 +8,7 @@ interface Props {
   merchantTax: number;
   onClearCart: () => void;
   onRemoveItem: (productId: string) => void;
-  onIncreaseQty: (productId: string, newQty: number) => void;
+  onIncreaseQty: (productId: string, newQty?: number) => void;
 }
 
 export default function OrderSummary({
@@ -52,7 +52,11 @@ export default function OrderSummary({
                   }
                   className="w-16 rounded-lg bg-[#F3F3F5] text-center"
                 />
-                <Button variant="outline" className="bg-transparent p-2">
+                <Button
+                  variant="outline"
+                  className="bg-transparent p-2"
+                  onClick={() => onIncreaseQty(item.product.id)}
+                >
                   <Plus className="h-4" />
                 </Button>
                 <Button

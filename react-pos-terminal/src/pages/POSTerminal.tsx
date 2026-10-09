@@ -52,11 +52,15 @@ export default function POSTerminal() {
     }
   }
 
-  function handleIncreaseQty(productId: string, newQty: number) {
+  function handleIncreaseQty(productId: string, newQty?: number) {
     const cartItem = cartItems.find((item) => item.product.id === productId);
-    if (!cartItem || newQty < 1) return;
+    if (!cartItem) return;
 
-    cartItem.quantity = newQty;
+    if (newQty) {
+      cartItem.quantity = newQty;
+    } else {
+      cartItem.quantity = cartItem.quantity + 1;
+    }
 
     const filteredCart = cartItems.filter(
       (item) => item.product.id !== productId,
