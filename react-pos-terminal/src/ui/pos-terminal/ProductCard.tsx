@@ -1,6 +1,7 @@
 import type { Product } from "@/lib/types";
 import Button from "../Button";
 import { Plus } from "lucide-react";
+import { formatCurrency } from "@/lib/utils";
 
 interface Props {
   product: Product;
@@ -23,7 +24,9 @@ export default function ProductCard({ product, onAddToCart }: Props) {
         <p className="mb-3 text-sm font-normal text-[#6A7282]">
           {product.category.name}
         </p>
-        <p className="text-base font-medium text-[#00A63E]">${product.price}</p>
+        <p className="text-base font-medium text-[#00A63E]">
+          {formatCurrency(product.price)}
+        </p>
       </div>
       <Button
         variant="filled"
