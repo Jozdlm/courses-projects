@@ -30,5 +30,6 @@ export interface MerchantProfile {
   name: string;
   currency: string;
   country: string;
+  language: string;
   tax: number;
 }
