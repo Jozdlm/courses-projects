@@ -19,7 +19,7 @@ export default function ProductList({ products, onAddToCart }: Props) {
   }
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4">
+    <div className="grid auto-rows-min grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4">
       {products.map((product) => (
         <ProductCard
           key={product.id}
