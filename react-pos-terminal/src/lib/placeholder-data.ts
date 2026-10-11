@@ -164,5 +164,6 @@ export const merchantProfile: MerchantProfile = {
   name: "Libreria La Joya",
   currency: "GTQ",
   country: "Guatemala",
+  language: "es-GT",
   tax: 0.12,
 };
