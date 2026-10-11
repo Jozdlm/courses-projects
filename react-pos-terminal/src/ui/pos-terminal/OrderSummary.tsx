@@ -9,6 +9,7 @@ interface Props {
   onClearCart: () => void;
   onRemoveItem: (productId: string) => void;
   onIncreaseQty: (productId: string, newQty?: number) => void;
+  onDecreaseQty: (productId: string) => void;
 }
 
 export default function OrderSummary({
@@ -16,6 +17,7 @@ export default function OrderSummary({
   onClearCart,
   onRemoveItem,
   onIncreaseQty,
+  onDecreaseQty,
   merchantTax,
 }: Props) {
   return (
@@ -40,7 +42,11 @@ export default function OrderSummary({
                 </p>
               </div>
               <div className="flex gap-2">
-                <Button variant="outline" className="bg-transparent p-2">
+                <Button
+                  variant="outline"
+                  className="bg-transparent p-2"
+                  onClick={() => onDecreaseQty(item.product.id)}
+                >
                   <Minus className="h-4" />
                 </Button>
                 <input
