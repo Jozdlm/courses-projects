@@ -9,6 +9,7 @@ export interface Product {
 export interface Category {
   id: string;
   name: string;
+  merchantId: string;
 }
 
 export interface CartItem {

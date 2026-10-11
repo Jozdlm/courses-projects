@@ -2,10 +2,26 @@ import type { Category, MerchantProfile, Product } from "./types";
 
 // Don't change the order as this will affect the product list
 export const categories: Category[] = [
-  { id: "a1b2c3d4-1111-4a1b-8c2d-3e4f5a6b7c8d", name: "Coffe" },
-  { id: "b2c3d4e5-2222-4b2c-9d3e-4f5a6b7c8d9e", name: "Pastry" },
-  { id: "c3d4e5f6-3333-4c3d-8e4f-5a6b7c8d9e0f", name: "Food" },
-  { id: "d4e5f6a7-4444-4d4e-9f5a-6b7c8d9e0f1a", name: "Beverage" },
+  {
+    id: "a1b2c3d4-1111-4a1b-8c2d-3e4f5a6b7c8d",
+    name: "Coffe",
+    merchantId: "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47",
+  },
+  {
+    id: "b2c3d4e5-2222-4b2c-9d3e-4f5a6b7c8d9e",
+    name: "Pastry",
+    merchantId: "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47",
+  },
+  {
+    id: "c3d4e5f6-3333-4c3d-8e4f-5a6b7c8d9e0f",
+    name: "Food",
+    merchantId: "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47",
+  },
+  {
+    id: "d4e5f6a7-4444-4d4e-9f5a-6b7c8d9e0f1a",
+    name: "Beverage",
+    merchantId: "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47",
+  },
 ];
 
 const [coffee, pastry, food, beverage] = categories;
