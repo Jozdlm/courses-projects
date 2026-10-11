@@ -52,15 +52,24 @@ export default function POSTerminal() {
     }
   }
 
-  function handleIncreaseQty(productId: string, newQty?: number) {
+  function handleIncreaseQty(productId: string) {
     const cartItem = cartItems.find((item) => item.product.id === productId);
     if (!cartItem) return;
 
-    if (newQty) {
-      cartItem.quantity = newQty;
-    } else {
-      cartItem.quantity = cartItem.quantity + 1;
-    }
+    cartItem.quantity = cartItem.quantity + 1;
+
+    const filteredCart = cartItems.filter(
+      (item) => item.product.id !== productId,
+    );
+    setCartItems([...filteredCart, cartItem]);
+  }
+
+  function handleQtyChange(productId: string, newQty: number) {
+    const cartItem = cartItems.find((item) => item.product.id === productId);
+    if (!cartItem) return;
+    if (newQty <= 0) return;
+
+    cartItem.quantity = newQty;
 
     const filteredCart = cartItems.filter(
       (item) => item.product.id !== productId,
@@ -71,6 +80,7 @@ export default function POSTerminal() {
   function handleDecreaseQty(productId: string) {
     const cartItem = cartItems.find((item) => item.product.id === productId);
     if (!cartItem) return;
+    if (cartItem.quantity <= 1) return;
 
     cartItem.quantity = cartItem.quantity - 1;
 
@@ -130,6 +140,7 @@ export default function POSTerminal() {
         onRemoveItem={handleRemoveItem}
         onIncreaseQty={handleIncreaseQty}
         onDecreaseQty={handleDecreaseQty}
+        onQtyChange={handleQtyChange}
         merchantTax={merchantTax}
       />
     </section>

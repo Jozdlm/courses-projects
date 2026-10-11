@@ -8,8 +8,9 @@ interface Props {
   merchantTax: number;
   onClearCart: () => void;
   onRemoveItem: (productId: string) => void;
-  onIncreaseQty: (productId: string, newQty?: number) => void;
+  onIncreaseQty: (productId: string) => void;
   onDecreaseQty: (productId: string) => void;
+  onQtyChange: (productId: string, newQty: number) => void;
 }
 
 export default function OrderSummary({
@@ -18,6 +19,7 @@ export default function OrderSummary({
   onRemoveItem,
   onIncreaseQty,
   onDecreaseQty,
+  onQtyChange,
   merchantTax,
 }: Props) {
   return (
@@ -54,7 +56,7 @@ export default function OrderSummary({
                   defaultValue={1}
                   value={item.quantity}
                   onChange={(e) =>
-                    onIncreaseQty(item.product.id, Number(e.target.value))
+                    onQtyChange(item.product.id, Number(e.target.value))
                   }
                   className="w-16 rounded-lg bg-[#F3F3F5] text-center"
                 />
