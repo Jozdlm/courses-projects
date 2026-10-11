@@ -8,15 +8,20 @@ import OrderSummary from "@/ui/pos-terminal/OrderSummary";
 import CategoryFilter from "@/ui/pos-terminal/CategoryFilter";
 import ProductList from "@/ui/pos-terminal/ProductList";
 import SearchBar from "@/ui/SearchBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function POSTerminal() {
   const products: Product[] = getProductList();
-  const categories: Category[] = getCategoryList();
+  const [categories, setCategories] = useState<Category[]>([]);
   const merchantTax: number = getMerchantProfile().tax;
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [query, setQuery] = useState<string>("");
+
+  // SERVER REQUESTS
+  useEffect(() => {
+    getCategoryList().then(setCategories);
+  });
 
   // CART
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
