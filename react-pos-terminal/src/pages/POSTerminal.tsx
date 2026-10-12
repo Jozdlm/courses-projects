@@ -26,7 +26,7 @@ export default function POSTerminal({ merchant }: Props) {
   // SERVER REQUESTS
   useEffect(() => {
     getCategoryList().then(setCategories);
-  });
+  }, []);
 
   // MERCHANT
   const merchantTax = merchant.tax;
