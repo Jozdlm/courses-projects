@@ -84,8 +84,8 @@ export default function POSTerminal({ merchant }: Props) {
   function handleDecreaseQty(productId: string) {
     setCartItems((prev) =>
       prev.map((item) => {
-        if (item.product.id !== productId || item.quantity <= 1) return item;
-        return { ...item, quantity: item.quantity - 1 };
+        if (item.product.id !== productId) return item;
+        return { ...item, quantity: Math.max(1, item.quantity - 1) };
       }),
     );
   }
