@@ -3,10 +3,17 @@ import type { Product } from "@/lib/types";
 
 interface Props {
   products: Product[];
+  currency: string;
+  lang: string;
   onAddToCart: (item: Product) => void;
 }
 
-export default function ProductList({ products, onAddToCart }: Props) {
+export default function ProductList({
+  products,
+  currency,
+  lang,
+  onAddToCart,
+}: Props) {
   if (products.length === 0) {
     return (
       <div
@@ -24,6 +31,8 @@ export default function ProductList({ products, onAddToCart }: Props) {
         <ProductCard
           key={product.id}
           product={product}
+          currency={currency}
+          lang={lang}
           onAddToCart={onAddToCart}
         />
       ))}

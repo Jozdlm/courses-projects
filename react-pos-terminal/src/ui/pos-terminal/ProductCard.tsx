@@ -5,10 +5,17 @@ import { formatCurrency } from "@/lib/utils";
 
 interface Props {
   product: Product;
+  currency: string;
+  lang: string;
   onAddToCart: (item: Product) => void;
 }
 
-export default function ProductCard({ product, onAddToCart }: Props) {
+export default function ProductCard({
+  product,
+  currency,
+  lang,
+  onAddToCart,
+}: Props) {
   return (
     <div
       key={product.id}
@@ -25,7 +32,7 @@ export default function ProductCard({ product, onAddToCart }: Props) {
           {product.category.name}
         </p>
         <p className="text-base font-medium text-[#00A63E]">
-          {formatCurrency(product.price)}
+          {formatCurrency(product.price, currency, lang)}
         </p>
       </div>
       <Button

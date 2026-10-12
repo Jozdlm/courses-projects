@@ -1,6 +1,5 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { getMerchantProfile } from "./actions";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -13,9 +12,8 @@ export function formatPercent(value: number, decimals: number = 2) {
   }).format(value);
 }
 
-export function formatCurrency(value: number) {
-  const currency = getMerchantProfile().currency;
-  return new Intl.NumberFormat("es-GT", {
+export function formatCurrency(value: number, currency: string, lang: string) {
+  return new Intl.NumberFormat(lang, {
     style: "currency",
     currency,
   }).format(value);

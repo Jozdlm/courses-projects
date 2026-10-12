@@ -1,30 +1,39 @@
-import {
-  getCategoryList,
-  getMerchantProfile,
-  getProductList,
-} from "@/lib/actions";
-import type { Cart, CartItem, Category, Product } from "@/lib/types";
+import { getCategoryList, getProductList } from "@/lib/actions";
+import type {
+  Cart,
+  CartItem,
+  Category,
+  MerchantProfile,
+  Product,
+} from "@/lib/types";
 import OrderSummary from "@/ui/pos-terminal/OrderSummary";
 import CategoryFilter from "@/ui/pos-terminal/CategoryFilter";
 import ProductList from "@/ui/pos-terminal/ProductList";
 import SearchBar from "@/ui/SearchBar";
 import { useEffect, useState } from "react";
 
-export default function POSTerminal() {
+interface Props {
+  merchant: MerchantProfile;
+}
+
+export default function POSTerminal({ merchant }: Props) {
   const products: Product[] = getProductList();
   const [categories, setCategories] = useState<Category[]>([]);
-  const merchantTax: number = getMerchantProfile().tax;
-
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [query, setQuery] = useState<string>("");
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   // SERVER REQUESTS
   useEffect(() => {
     getCategoryList().then(setCategories);
   });
 
+  // MERCHANT
+  const merchantTax = merchant.tax;
+  const currency = merchant.currency;
+  const lang = merchant.language;
+
   // CART
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const subtotal = cartItems.reduce(
     (acc, curr) => acc + curr.quantity * curr.unitPrice,
     0,
@@ -136,17 +145,21 @@ export default function POSTerminal() {
         </div>
         <ProductList
           products={filteredProducts}
+          currency={currency}
+          lang={lang}
           onAddToCart={handleAddToCart}
         />
       </div>
       <OrderSummary
         cart={cart}
+        merchantTax={merchantTax}
+        currency={currency}
+        lang={lang}
         onClearCart={handleClearCart}
         onRemoveItem={handleRemoveItem}
         onIncreaseQty={handleIncreaseQty}
         onDecreaseQty={handleDecreaseQty}
         onQtyChange={handleQtyChange}
-        merchantTax={merchantTax}
       />
     </section>
   );
