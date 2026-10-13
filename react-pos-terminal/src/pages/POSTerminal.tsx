@@ -1,16 +1,11 @@
 import { getCategoryList, getProductList } from "@/lib/actions";
-import type {
-  Cart,
-  CartItem,
-  Category,
-  MerchantProfile,
-  Product,
-} from "@/lib/types";
+import type { Cart, Category, MerchantProfile, Product } from "@/lib/types";
 import OrderSummary from "@/ui/pos-terminal/OrderSummary";
 import CategoryFilter from "@/ui/pos-terminal/CategoryFilter";
 import ProductList from "@/ui/pos-terminal/ProductList";
 import SearchBar from "@/ui/SearchBar";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
+import { cartReducer, getCartInitialState } from "@/lib/cart-reducer";
 
 interface Props {
   merchant: MerchantProfile;
@@ -21,7 +16,7 @@ export default function POSTerminal({ merchant }: Props) {
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [query, setQuery] = useState<string>("");
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartState, dispatch] = useReducer(cartReducer, getCartInitialState());
 
   // SERVER REQUESTS
   useEffect(() => {
@@ -34,68 +29,41 @@ export default function POSTerminal({ merchant }: Props) {
   const lang = merchant.language;
 
   // CART
-  const subtotal = cartItems.reduce(
+  const subtotal = cartState.items.reduce(
     (acc, curr) => acc + curr.quantity * curr.unitPrice,
     0,
   );
   const tax = subtotal * merchantTax;
   const total = subtotal + tax;
   const cart: Cart = {
-    items: cartItems,
+    items: cartState.items,
     subtotal,
     tax,
     total,
   };
 
   function handleAddToCart(product: Product) {
-    setCartItems((prev) => {
-      const existingItem = prev.find((item) => item.product.id === product.id);
-
-      if (existingItem) {
-        return prev.map((item) => {
-          if (item.product.id !== product.id) return item;
-          return { ...item, quantity: item.quantity + 1 };
-        });
-      }
-
-      return [...prev, { product, unitPrice: product.price, quantity: 1 }];
-    });
+    dispatch({ type: "ADD_ITEM", payload: product });
   }
 
   function handleIncreaseQty(productId: string) {
-    setCartItems((prev) =>
-      prev.map((item) => {
-        if (item.product.id !== productId) return item;
-        return { ...item, quantity: item.quantity + 1 };
-      }),
-    );
+    dispatch({ type: "INCREASE_QTY", payload: productId });
   }
 
-  function handleQtyChange(productId: string, newQty: number) {
-    if (newQty <= 0) return;
-    setCartItems((prev) =>
-      prev.map((item) => {
-        if (item.product.id !== productId) return item;
-        return { ...item, quantity: newQty };
-      }),
-    );
+  function handleSetQty(productId: string, quantity: number) {
+    dispatch({ type: "SET_QTY", payload: { productId, quantity } });
   }
 
   function handleDecreaseQty(productId: string) {
-    setCartItems((prev) =>
-      prev.map((item) => {
-        if (item.product.id !== productId) return item;
-        return { ...item, quantity: Math.max(1, item.quantity - 1) };
-      }),
-    );
+    dispatch({ type: "DECREASE_QTY", payload: productId });
   }
 
   function handleRemoveItem(productId: string) {
-    setCartItems(cartItems.filter((item) => item.product.id != productId));
+    dispatch({ type: "REMOVE_ITEM", payload: productId });
   }
 
   function handleClearCart() {
-    setCartItems([]);
+    dispatch({ type: "CLEAR_CART" });
   }
 
   // FILTERS
@@ -145,7 +113,7 @@ export default function POSTerminal({ merchant }: Props) {
         onRemoveItem={handleRemoveItem}
         onIncreaseQty={handleIncreaseQty}
         onDecreaseQty={handleDecreaseQty}
-        onQtyChange={handleQtyChange}
+        onQtyChange={handleSetQty}
       />
     </section>
   );
