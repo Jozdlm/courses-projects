@@ -40,7 +40,10 @@ export default function OrderSummary({
       <div>
         <div className="mb-4 flex flex-col gap-3">
           {cart.items.map((item) => (
-            <div className="flex justify-between rounded-xl bg-[#F9FAFB] p-3">
+            <div
+              className="flex justify-between rounded-xl bg-[#F9FAFB] p-3"
+              key={item.product.id}
+            >
               <div>
                 <p className="text-base font-medium">{item.product.name}</p>
                 <p className="text-sm font-normal text-[#4A5565]">
@@ -57,7 +60,6 @@ export default function OrderSummary({
                 </Button>
                 <input
                   type="text"
-                  defaultValue={1}
                   value={item.quantity}
                   onChange={(e) =>
                     onQtyChange(item.product.id, Number(e.target.value))
