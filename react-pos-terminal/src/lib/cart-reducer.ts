@@ -1,4 +1,5 @@
 import type { CartItem, Product } from "./types";
+import { cartStateSchema } from "./schemas";
 
 export interface CartState {
   items: CartItem[];
@@ -13,9 +14,22 @@ export type CartAction =
   | { type: "CLEAR_CART" };
 
 export const getCartInitialState = (): CartState => {
-  return {
+  const localCartState = localStorage.getItem("task-state");
+  const initialState: CartState = {
     items: [],
   };
+
+  if (!localCartState) {
+    return initialState;
+  }
+
+  const result = cartStateSchema.safeParse(JSON.parse(localCartState));
+
+  if (result.error) {
+    return initialState;
+  }
+
+  return result.data;
 };
 
 export const cartReducer = (

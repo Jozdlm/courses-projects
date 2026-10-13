@@ -23,6 +23,11 @@ export default function POSTerminal({ merchant }: Props) {
     getCategoryList().then(setCategories);
   }, []);
 
+  // SIDE EFFECTS
+  useEffect(() => {
+    localStorage.setItem("cart-state", JSON.stringify(cartState));
+  }, [cartState]);
+
   // MERCHANT
   const merchantTax = merchant.tax;
   const currency = merchant.currency;
