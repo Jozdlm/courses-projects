@@ -1,17 +1,19 @@
 import { z } from "zod";
 
 export const categorySchema = z.object({
-  id: z.string(),
+  id: z.uuid(),
   name: z.string(),
   merchantId: z.uuid(),
 });
 
 export const productSchema = z.object({
-  id: z.string(),
+  id: z.uuid(),
   imgUrl: z.string(),
   name: z.string(),
-  category: categorySchema,
   price: z.number(),
+  categoryId: z.uuid(),
+  merchantId: z.uuid(),
+  category: categorySchema,
 });
 
 export const cartItemSchema = z.object({

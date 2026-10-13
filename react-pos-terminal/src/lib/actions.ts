@@ -1,9 +1,19 @@
-import { products } from "./placeholder-data";
 import type { Category, MerchantProfile, Product } from "./types";
 import { api } from "./http";
+import z from "zod";
+import { productSchema } from "./schemas";
 
-export function getProductList(): Product[] {
-  return [...products];
+export async function getProductList(): Promise<Product[]> {
+  const productsSchema = z.array(productSchema);
+  const params = new URLSearchParams({ _embed: "category" });
+  const { data } = await api.get<Product[]>("/products", { params });
+  const result = productsSchema.safeParse(data);
+
+  if (!result.success) {
+    throw new Error("Invalid products response");
+  }
+
+  return result.data;
 }
 
 export async function getCategoryList(): Promise<Category[]> {

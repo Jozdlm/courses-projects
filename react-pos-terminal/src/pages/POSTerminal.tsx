@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function POSTerminal({ merchant }: Props) {
-  const products: Product[] = getProductList();
+  const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [query, setQuery] = useState<string>("");
@@ -21,6 +21,7 @@ export default function POSTerminal({ merchant }: Props) {
   // SERVER REQUESTS
   useEffect(() => {
     getCategoryList().then(setCategories);
+    getProductList().then(setProducts);
   }, []);
 
   // SIDE EFFECTS
