@@ -2,16 +2,16 @@ import type { Product } from "@/lib/types";
 import Button from "../Button";
 import { Plus } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
-import { useContext } from "react";
-import { MerchantContext } from "@/context/MerchantContext";
+import { useMerchant } from "@/context/MerchantContext";
+import { useCartDispatch } from "@/context/CartContext";
 
 interface Props {
   product: Product;
-  onAddToCart: (item: Product) => void;
 }
 
-export default function ProductCard({ product, onAddToCart }: Props) {
-  const { currency, language } = useContext(MerchantContext);
+export default function ProductCard({ product }: Props) {
+  const { currency, language } = useMerchant();
+  const dispatch = useCartDispatch();
 
   return (
     <div
@@ -35,7 +35,7 @@ export default function ProductCard({ product, onAddToCart }: Props) {
       <Button
         variant="filled"
         className="mt-auto flex w-full items-center justify-center gap-4"
-        onClick={() => onAddToCart(product)}
+        onClick={() => dispatch({ type: "ADD_ITEM", payload: product })}
       >
         <Plus className="h-4 w-4" />
         <span>Add to cart</span>

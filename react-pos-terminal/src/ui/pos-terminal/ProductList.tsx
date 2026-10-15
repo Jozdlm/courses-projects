@@ -3,10 +3,9 @@ import type { Product } from "@/lib/types";
 
 interface Props {
   products: Product[];
-  onAddToCart: (item: Product) => void;
 }
 
-export default function ProductList({ products, onAddToCart }: Props) {
+export default function ProductList({ products }: Props) {
   if (products.length === 0) {
     return (
       <div
@@ -21,11 +20,7 @@ export default function ProductList({ products, onAddToCart }: Props) {
   return (
     <div className="grid auto-rows-min grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4">
       {products.map((product) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          onAddToCart={onAddToCart}
-        />
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
   );

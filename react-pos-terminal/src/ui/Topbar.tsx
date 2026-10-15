@@ -1,8 +1,7 @@
-import { MerchantContext } from "@/context/MerchantContext";
-import { useContext } from "react";
+import { useMerchant } from "@/context/MerchantContext";
 
 export default function Topbar() {
-  const { name } = useContext(MerchantContext);
+  const { name } = useMerchant();
 
   return (
     <div className="mb-6 flex w-full justify-center border-b border-b-gray-200 bg-white p-4">

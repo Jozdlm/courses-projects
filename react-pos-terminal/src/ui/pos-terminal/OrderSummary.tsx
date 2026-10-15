@@ -1,29 +1,14 @@
 import { ShoppingCart } from "lucide-react";
 import Button from "../Button";
-import type { Cart } from "@/lib/types";
 import { formatCurrency, formatPercent } from "@/lib/utils";
 import CartItem from "./CartItem";
-import { useContext } from "react";
-import { MerchantContext } from "@/context/MerchantContext";
+import { useMerchant } from "@/context/MerchantContext";
+import { useCart, useCartDispatch } from "@/context/CartContext";
 
-interface Props {
-  cart: Cart;
-  onClearCart: () => void;
-  onRemoveItem: (productId: string) => void;
-  onIncreaseQty: (productId: string) => void;
-  onDecreaseQty: (productId: string) => void;
-  onQtyChange: (productId: string, newQty: number) => void;
-}
-
-export default function OrderSummary({
-  cart,
-  onClearCart,
-  onRemoveItem,
-  onIncreaseQty,
-  onDecreaseQty,
-  onQtyChange,
-}: Props) {
-  const { currency, language, tax } = useContext(MerchantContext);
+export default function OrderSummary() {
+  const { currency, language, tax } = useMerchant();
+  const cart = useCart();
+  const dispatch = useCartDispatch();
 
   return (
     <section className="grid grid-rows-[auto_1fr] gap-6 self-start rounded-xl border border-gray-200 bg-white p-6">
@@ -33,7 +18,11 @@ export default function OrderSummary({
           <p className="text-base leading-6 font-normal">Current Order</p>
         </div>
         {cart.items.length > 0 && (
-          <Button variant="ghost" className="px-3 py-1.5" onClick={onClearCart}>
+          <Button
+            variant="ghost"
+            className="px-3 py-1.5"
+            onClick={() => dispatch({ type: "CLEAR_CART" })}
+          >
             Clear
           </Button>
         )}
@@ -42,16 +31,7 @@ export default function OrderSummary({
         <div>
           <div className="mb-6 flex flex-col gap-3">
             {cart.items.map((item) => (
-              <CartItem
-                key={item.product.id}
-                item={item}
-                currency={currency}
-                lang={language}
-                onRemoveItem={onRemoveItem}
-                onDecreaseQty={onDecreaseQty}
-                onIncreaseQty={onIncreaseQty}
-                onQtyChange={onQtyChange}
-              />
+              <CartItem key={item.product.id} item={item} />
             ))}
           </div>
           <div className="mb-6">
