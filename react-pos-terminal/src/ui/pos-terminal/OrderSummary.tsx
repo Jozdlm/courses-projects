@@ -3,12 +3,11 @@ import Button from "../Button";
 import type { Cart } from "@/lib/types";
 import { formatCurrency, formatPercent } from "@/lib/utils";
 import CartItem from "./CartItem";
+import { useContext } from "react";
+import { MerchantContext } from "@/context/MerchantContext";
 
 interface Props {
   cart: Cart;
-  merchantTax: number;
-  currency: string;
-  lang: string;
   onClearCart: () => void;
   onRemoveItem: (productId: string) => void;
   onIncreaseQty: (productId: string) => void;
@@ -18,15 +17,14 @@ interface Props {
 
 export default function OrderSummary({
   cart,
-  merchantTax,
-  currency,
-  lang,
   onClearCart,
   onRemoveItem,
   onIncreaseQty,
   onDecreaseQty,
   onQtyChange,
 }: Props) {
+  const { currency, language, tax } = useContext(MerchantContext);
+
   return (
     <section className="grid grid-rows-[auto_1fr] gap-6 self-start rounded-xl border border-gray-200 bg-white p-6">
       <div className="flex items-center justify-between">
@@ -48,7 +46,7 @@ export default function OrderSummary({
                 key={item.product.id}
                 item={item}
                 currency={currency}
-                lang={lang}
+                lang={language}
                 onRemoveItem={onRemoveItem}
                 onDecreaseQty={onDecreaseQty}
                 onIncreaseQty={onIncreaseQty}
@@ -60,24 +58,22 @@ export default function OrderSummary({
             <div className="border-b border-b-gray-300 font-medium">
               <div className="mb-2 flex items-center justify-between text-sm">
                 <p className="text-sm text-[#4A5565]">Subtotal</p>
-                <p>{formatCurrency(cart.subtotal, currency, lang)}</p>
+                <p>{formatCurrency(cart.subtotal, currency, language)}</p>
               </div>
               <div className="flex items-center justify-between pb-2 text-sm">
-                <p className="text-[#4A5565]">
-                  Tax ({formatPercent(merchantTax)})
-                </p>
-                <p>{formatCurrency(cart.tax, currency, lang)}</p>
+                <p className="text-[#4A5565]">Tax ({formatPercent(tax)})</p>
+                <p>{formatCurrency(cart.tax, currency, language)}</p>
               </div>
             </div>
             <div className="flex items-center justify-between pt-2">
               <p>Total</p>
               <p className="text-[#00A63E]">
-                {formatCurrency(cart.total, currency, lang)}
+                {formatCurrency(cart.total, currency, language)}
               </p>
             </div>
           </div>
           <Button variant="filled" className="w-full py-3">
-            Checkout - {formatCurrency(cart.total, currency, lang)}
+            Checkout - {formatCurrency(cart.total, currency, language)}
           </Button>
         </div>
       )}

@@ -2,20 +2,17 @@ import type { Product } from "@/lib/types";
 import Button from "../Button";
 import { Plus } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
+import { useContext } from "react";
+import { MerchantContext } from "@/context/MerchantContext";
 
 interface Props {
   product: Product;
-  currency: string;
-  lang: string;
   onAddToCart: (item: Product) => void;
 }
 
-export default function ProductCard({
-  product,
-  currency,
-  lang,
-  onAddToCart,
-}: Props) {
+export default function ProductCard({ product, onAddToCart }: Props) {
+  const { currency, language } = useContext(MerchantContext);
+
   return (
     <div
       key={product.id}
@@ -32,7 +29,7 @@ export default function ProductCard({
           {product.category.name}
         </p>
         <p className="text-base font-medium text-[#00A63E]">
-          {formatCurrency(product.price, currency, lang)}
+          {formatCurrency(product.price, currency, language)}
         </p>
       </div>
       <Button

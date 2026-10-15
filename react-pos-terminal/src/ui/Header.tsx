@@ -1,14 +1,10 @@
 import Tabs from "./Tabs";
 import Topbar from "./Topbar";
 
-interface Props {
-  merchantName: string;
-}
-
-export default function Header({ merchantName }: Props) {
+export default function Header() {
   return (
     <header>
-      <Topbar merchantName={merchantName} />
+      <Topbar />
       <Tabs />
     </header>
   );

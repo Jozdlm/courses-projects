@@ -1,30 +1,23 @@
-import {
-  getCategoryList,
-  getMerchantProfile,
-  getProductList,
-} from "@/lib/actions";
-import type { Cart, Category, MerchantProfile, Product } from "@/lib/types";
+import { getCategoryList, getProductList } from "@/lib/actions";
+import type { Cart, Category, Product } from "@/lib/types";
 import OrderSummary from "@/ui/pos-terminal/OrderSummary";
 import CategoryFilter from "@/ui/pos-terminal/CategoryFilter";
 import ProductList from "@/ui/pos-terminal/ProductList";
 import SearchBar from "@/ui/SearchBar";
-import { useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import { cartReducer, getCartInitialState } from "@/lib/cart-reducer";
-
-// TODO: Get it from login
-const MERCHANT_ID: string = "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47";
+import { MerchantContext } from "@/context/MerchantContext";
 
 export default function POSTerminal() {
-  const [merchant, setMerchant] = useState<MerchantProfile | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [query, setQuery] = useState<string>("");
   const [cartState, dispatch] = useReducer(cartReducer, getCartInitialState());
+  const { tax: merchantTax } = useContext(MerchantContext);
 
   // SERVER REQUESTS
   useEffect(() => {
-    getMerchantProfile(MERCHANT_ID).then(setMerchant);
     getCategoryList().then(setCategories);
     getProductList().then(setProducts);
   }, []);
@@ -33,13 +26,6 @@ export default function POSTerminal() {
   useEffect(() => {
     localStorage.setItem("cart-state", JSON.stringify(cartState));
   }, [cartState]);
-
-  if (!merchant) return <p>Loading....</p>;
-
-  // MERCHANT
-  const merchantTax = merchant.tax;
-  const currency = merchant.currency;
-  const lang = merchant.language;
 
   // CART
   const subtotal = cartState.items.reduce(
@@ -112,16 +98,11 @@ export default function POSTerminal() {
         </div>
         <ProductList
           products={filteredProducts}
-          currency={currency}
-          lang={lang}
           onAddToCart={handleAddToCart}
         />
       </div>
       <OrderSummary
         cart={cart}
-        merchantTax={merchantTax}
-        currency={currency}
-        lang={lang}
         onClearCart={handleClearCart}
         onRemoveItem={handleRemoveItem}
         onIncreaseQty={handleIncreaseQty}
