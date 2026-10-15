@@ -1,4 +1,4 @@
-import { createBrowserRouter, Navigate } from "react-router";
+import { createBrowserRouter, redirect } from "react-router";
 import DashboardLayout from "./layouts/DasbhoardLayout";
 import App from "./App";
 import POSTerminal from "./pages/POSTerminal";
@@ -10,6 +10,10 @@ export const router = createBrowserRouter([
     path: "/",
     Component: App,
     children: [
+      {
+        index: true,
+        loader: () => redirect("/dashboard"),
+      },
       {
         path: "dashboard",
         Component: DashboardLayout,
@@ -28,11 +32,11 @@ export const router = createBrowserRouter([
         path: "login",
         Component: LoginPage,
       },
+      // TODO: Implement 404 page or redirect to high-level page
+      {
+        path: "*",
+        loader: () => redirect("/"),
+      },
     ],
-  },
-  {
-    path: "*",
-    // TODO: Change default page or add 404 page
-    element: <Navigate to="/dashboard" />,
   },
 ]);
