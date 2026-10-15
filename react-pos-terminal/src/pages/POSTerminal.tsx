@@ -1,4 +1,8 @@
-import { getCategoryList, getProductList } from "@/lib/actions";
+import {
+  getCategoryList,
+  getMerchantProfile,
+  getProductList,
+} from "@/lib/actions";
 import type { Cart, Category, MerchantProfile, Product } from "@/lib/types";
 import OrderSummary from "@/ui/pos-terminal/OrderSummary";
 import CategoryFilter from "@/ui/pos-terminal/CategoryFilter";
@@ -7,11 +11,11 @@ import SearchBar from "@/ui/SearchBar";
 import { useEffect, useReducer, useState } from "react";
 import { cartReducer, getCartInitialState } from "@/lib/cart-reducer";
 
-interface Props {
-  merchant: MerchantProfile;
-}
+// TODO: Get it from login
+const MERCHANT_ID: string = "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47";
 
-export default function POSTerminal({ merchant }: Props) {
+export default function POSTerminal() {
+  const [merchant, setMerchant] = useState<MerchantProfile | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -20,6 +24,7 @@ export default function POSTerminal({ merchant }: Props) {
 
   // SERVER REQUESTS
   useEffect(() => {
+    getMerchantProfile(MERCHANT_ID).then(setMerchant);
     getCategoryList().then(setCategories);
     getProductList().then(setProducts);
   }, []);
@@ -28,6 +33,8 @@ export default function POSTerminal({ merchant }: Props) {
   useEffect(() => {
     localStorage.setItem("cart-state", JSON.stringify(cartState));
   }, [cartState]);
+
+  if (!merchant) return <p>Loading....</p>;
 
   // MERCHANT
   const merchantTax = merchant.tax;
