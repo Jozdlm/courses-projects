@@ -1,20 +1,21 @@
 import { useEffect, useReducer } from "react";
 import { CartContext, CartDispatchContext } from "./CartContext";
-import { cartReducer, getCartInitialState } from "@/lib/cart-reducer";
+import { cartReducer } from "@/lib/cart-reducer";
 import type { Cart } from "@/lib/types";
 import { useMerchant } from "./MerchantContext";
+import { loadCartState, saveCartSate } from "@/lib/cart-storage";
 
 export function CartProvider({ children }: React.PropsWithChildren) {
   const { tax: merchantTax } = useMerchant();
   const [cartState, dispatch] = useReducer(
     cartReducer,
     undefined,
-    getCartInitialState,
+    loadCartState,
   );
 
   // SIDE EFFECTS
   useEffect(() => {
-    localStorage.setItem("cart-state", JSON.stringify(cartState));
+    saveCartSate(cartState);
   }, [cartState]);
 
   // CART
