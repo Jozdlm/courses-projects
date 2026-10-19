@@ -18,3 +18,11 @@ export function formatCurrency(value: number, currency: string, lang: string) {
     currency,
   }).format(value);
 }
+
+export function normalizeText(query: string): string {
+  return query
+    .toLowerCase()
+    .trim()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "");
+}
