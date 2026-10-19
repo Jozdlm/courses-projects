@@ -18,7 +18,7 @@ export default function Tabs() {
   return (
     <section className="mb-8 flex w-full justify-center">
       <div className="w-full max-w-7xl">
-        <div className="w-fit rounded-2xl bg-[#ECECF0] p-1 text-sm leading-5">
+        <nav className="w-fit rounded-2xl bg-[#ECECF0] p-1 text-sm leading-5">
           {tabs.map((tab) => (
             <NavLink
               to={tab.path}
@@ -36,7 +36,7 @@ export default function Tabs() {
               {tab.label}
             </NavLink>
           ))}
-        </div>
+        </nav>
       </div>
     </section>
   );
