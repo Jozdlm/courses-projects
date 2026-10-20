@@ -7,6 +7,30 @@
       "country": "Guatemala",
       "language": "es-GT",
       "tax": 0.12
+    },
+    {
+      "id": "8b2f5d03-4c6e-4a79-8b1d-3e9f7c2a4b58",
+      "name": "Cafe El Punto",
+      "currency": "GTQ",
+      "country": "Guatemala",
+      "language": "es-GT",
+      "tax": 0.12
+    }
+  ],
+  "users": [
+    {
+      "id": "c9d0e1f2-9999-4c9d-8e0f-1a2b3c4d5e6f",
+      "name": "Ana Morales",
+      "email": "ana@librerialajoya.com",
+      "role": "cashier",
+      "merchantId": "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47"
+    },
+    {
+      "id": "d0e1f2a3-aaaa-4d0e-9f1a-2b3c4d5e6f70",
+      "name": "Luis Perez",
+      "email": "luis@cafeelpunto.com",
+      "role": "cashier",
+      "merchantId": "8b2f5d03-4c6e-4a79-8b1d-3e9f7c2a4b58"
     }
   ],
   "categories": [
@@ -29,6 +53,26 @@
       "id": "d4e5f6a7-4444-4d4e-9f5a-6b7c8d9e0f1a",
       "name": "Beverage",
       "merchantId": "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47"
+    },
+    {
+      "id": "e5f6a7b8-5555-4e5f-8a6b-7c8d9e0f1a2b",
+      "name": "Espresso",
+      "merchantId": "8b2f5d03-4c6e-4a79-8b1d-3e9f7c2a4b58"
+    },
+    {
+      "id": "f6a7b8c9-6666-4f6a-9b7c-8d9e0f1a2b3c",
+      "name": "Breakfast",
+      "merchantId": "8b2f5d03-4c6e-4a79-8b1d-3e9f7c2a4b58"
+    },
+    {
+      "id": "a7b8c9d0-7777-4a7b-8c8d-9e0f1a2b3c4d",
+      "name": "Sandwiches",
+      "merchantId": "8b2f5d03-4c6e-4a79-8b1d-3e9f7c2a4b58"
+    },
+    {
+      "id": "b8c9d0e1-8888-4b8c-9d9e-0f1a2b3c4d5e",
+      "name": "Smoothies",
+      "merchantId": "8b2f5d03-4c6e-4a79-8b1d-3e9f7c2a4b58"
     }
   ],
   "products": [
@@ -125,8 +169,8 @@
       "imgUrl": "https://images.unsplash.com/photo-1481070555726-e2fe8357725c?w=400",
       "name": "Breakfast Bagel",
       "price": 6.0,
-      "categoryId": "c3d4e5f6-3333-4c3d-8e4f-5a6b7c8d9e0f",
-      "merchantId": "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47"
+      "categoryId": "f6a7b8c9-6666-4f6a-9b7c-8d9e0f1a2b3c",
+      "merchantId": "8b2f5d03-4c6e-4a79-8b1d-3e9f7c2a4b58"
     },
     {
       "id": "6f3d2e10-1784-4a9f-8cb3-c4d5e6f70819",
@@ -149,16 +193,16 @@
       "imgUrl": "https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=400",
       "name": "Strawberry Smoothie",
       "price": 5.5,
-      "categoryId": "d4e5f6a7-4444-4d4e-9f5a-6b7c8d9e0f1a",
-      "merchantId": "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47"
+      "categoryId": "b8c9d0e1-8888-4b8c-9d9e-0f1a2b3c4d5e",
+      "merchantId": "8b2f5d03-4c6e-4a79-8b1d-3e9f7c2a4b58"
     },
     {
       "id": "92605143-4ab7-4ddb-9fe6-f708192a3b4c",
       "imgUrl": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=400",
       "name": "Sparkling Lemonade",
       "price": 3.75,
-      "categoryId": "d4e5f6a7-4444-4d4e-9f5a-6b7c8d9e0f1a",
-      "merchantId": "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47"
+      "categoryId": "b8c9d0e1-8888-4b8c-9d9e-0f1a2b3c4d5e",
+      "merchantId": "8b2f5d03-4c6e-4a79-8b1d-3e9f7c2a4b58"
     }
   ]
 }
