@@ -1,5 +1,5 @@
 import Tabs from "./Tabs";
-import Topbar from "./Topbar";
+import Topbar from "../components/Topbar";
 
 export default function Header() {
   return (
