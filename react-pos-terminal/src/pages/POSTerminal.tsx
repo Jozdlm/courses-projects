@@ -5,13 +5,12 @@ import SearchBar from "@/ui/SearchBar";
 import { CartProvider } from "@/context/CartProvider";
 import { useProducts } from "@/hooks/useProducts";
 import { useMerchant } from "@/context/MerchantContext";
-import { useCategories } from "@/hooks/useCategories";
 import { useProductFilter } from "@/hooks/useProductFilter";
 
 export default function POSTerminal() {
   const { id } = useMerchant();
   const { products } = useProducts(id);
-  const { categories } = useCategories(id);
+
   const {
     query,
     setQuery,
@@ -27,7 +26,6 @@ export default function POSTerminal() {
           <div className="rounded-xl border border-gray-200 bg-white p-4">
             <SearchBar value={query} onSearch={setQuery} />
             <CategoryFilter
-              categories={categories}
               selectedCategory={selectedCategoryId}
               onSelect={setSelectedCategoryId}
             />
