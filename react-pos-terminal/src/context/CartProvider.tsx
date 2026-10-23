@@ -2,7 +2,7 @@ import { useEffect, useReducer } from "react";
 import { CartContext, CartDispatchContext } from "./CartContext";
 import { cartReducer } from "@/lib/cart-reducer";
 import type { Cart } from "@/lib/types";
-import { useMerchant } from "./MerchantContext";
+import { useMerchant } from "../hooks/use-merchant";
 import { loadCartState, saveCartSate } from "@/lib/cart-storage";
 
 export function CartProvider({ children }: React.PropsWithChildren) {

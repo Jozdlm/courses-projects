@@ -8,7 +8,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useMerchant } from "@/context/MerchantContext";
+import { useMerchant } from "@/hooks/use-merchant";
 import { Link } from "react-router";
 
 export default function Topbar() {

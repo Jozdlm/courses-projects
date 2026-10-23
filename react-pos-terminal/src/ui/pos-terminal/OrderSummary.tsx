@@ -2,7 +2,7 @@ import { ShoppingCart } from "lucide-react";
 import Button from "../Button";
 import { formatCurrency, formatPercent } from "@/lib/utils";
 import CartItem from "./CartItem";
-import { useMerchant } from "@/context/MerchantContext";
+import { useMerchant } from "@/hooks/use-merchant";
 import { useCart, useCartDispatch } from "@/context/CartContext";
 
 export default function OrderSummary() {

@@ -1,4 +1,4 @@
-import { useMerchant } from "@/context/MerchantContext";
+import { useMerchant } from "@/hooks/use-merchant";
 import { getCategoryList } from "@/lib/actions";
 import { useQuery } from "@tanstack/react-query";
 

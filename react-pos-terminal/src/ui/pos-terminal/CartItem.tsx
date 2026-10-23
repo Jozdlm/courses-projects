@@ -3,7 +3,7 @@ import Button from "../Button";
 import { formatCurrency } from "@/lib/utils";
 import type { CartItem } from "@/lib/types";
 import { useCartDispatch } from "@/context/CartContext";
-import { useMerchant } from "@/context/MerchantContext";
+import { useMerchant } from "@/hooks/use-merchant";
 
 interface Props {
   item: CartItem;
