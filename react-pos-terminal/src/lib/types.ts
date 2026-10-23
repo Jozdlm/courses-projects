@@ -33,3 +33,16 @@ export interface MerchantProfile {
   language: string;
   tax: number;
 }
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  merchantId: string;
+}
+
+export interface LoginPayload {
+  email: string;
+  password: string;
+}

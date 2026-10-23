@@ -1,4 +1,10 @@
-import type { Category, MerchantProfile, Product } from "./types";
+import type {
+  Category,
+  LoginPayload,
+  MerchantProfile,
+  Product,
+  User,
+} from "./types";
 import { api } from "./http";
 import z from "zod";
 import { productSchema } from "./schemas";
@@ -22,4 +28,17 @@ export async function getCategoryList(): Promise<Category[]> {
 
 export async function getMerchantProfile(id: string): Promise<MerchantProfile> {
   return (await api.get<MerchantProfile>(`/merchants/${id}`)).data;
+}
+
+export async function logInWithPassword(
+  credentials: LoginPayload,
+): Promise<User> {
+  const params = new URLSearchParams({ email: credentials.email });
+  const result = await api.get<User[]>(`/users`, { params });
+
+  if (result.data.length === 0) {
+    throw new Error("Email or password incorrect");
+  }
+
+  return result.data[0];
 }
