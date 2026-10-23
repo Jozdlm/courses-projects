@@ -40,6 +40,7 @@ export interface User {
   email: string;
   role: string;
   merchantId: string;
+  merchant: MerchantProfile;
 }
 
 export interface LoginPayload {

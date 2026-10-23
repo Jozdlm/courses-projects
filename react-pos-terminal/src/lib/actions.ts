@@ -33,7 +33,10 @@ export async function getMerchantProfile(id: string): Promise<MerchantProfile> {
 export async function logInWithPassword(
   credentials: LoginPayload,
 ): Promise<User> {
-  const params = new URLSearchParams({ email: credentials.email });
+  const params = new URLSearchParams({
+    email: credentials.email,
+    _embed: "merchant",
+  });
   const result = await api.get<User[]>(`/users`, { params });
 
   if (result.data.length === 0) {

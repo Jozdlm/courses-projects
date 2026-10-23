@@ -1,20 +1,17 @@
-import { MerchantContext } from "@/context/MerchantContext";
+import { CartProvider } from "@/context/CartProvider";
+import { useSession } from "@/context/SessionContext";
 import Header from "@/ui/Header";
-import { Outlet } from "react-router";
+import { Navigate, Outlet } from "react-router";
 
 export default function DashboardLayout() {
-  // TODO: Load the information when use login
-  const testValue = {
-    id: "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47",
-    name: "Libreria La Joya",
-    currency: "GTQ",
-    country: "Guatemala",
-    language: "es-GT",
-    tax: 0.12,
-  };
+  const session = useSession();
+
+  if (session.status !== "LOGGED_IN") {
+    return <Navigate to="/login" replace />;
+  }
 
   return (
-    <MerchantContext value={testValue}>
+    <CartProvider>
       <div className="min-h-dvh bg-[#F9FAFB]">
         <Header />
         <main className="mb-8 flex w-full justify-center">
@@ -23,6 +20,6 @@ export default function DashboardLayout() {
           </div>
         </main>
       </div>
-    </MerchantContext>
+    </CartProvider>
   );
 }

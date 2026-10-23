@@ -7,5 +7,5 @@ export function useMerchant() {
     throw new Error("useMerchant requires a logged-in session");
   }
 
-  return session.merchant;
+  return session.user.merchant;
 }

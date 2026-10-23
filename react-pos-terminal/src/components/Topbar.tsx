@@ -8,11 +8,19 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useSessionDispatch } from "@/context/SessionContext";
 import { useMerchant } from "@/hooks/use-merchant";
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 
 export default function Topbar() {
   const { name } = useMerchant();
+  const dispatch = useSessionDispatch();
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    navigate("/login");
+    dispatch({ type: "LOG_OUT" });
+  };
 
   return (
     <div className="mb-6 flex w-full justify-center border-b border-b-gray-200 bg-white p-4">
@@ -33,9 +41,7 @@ export default function Topbar() {
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Link to={"/login"}>Logout</Link>
-              </DropdownMenuItem>
+              <DropdownMenuItem onClick={handleLogOut}>Logout</DropdownMenuItem>
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
