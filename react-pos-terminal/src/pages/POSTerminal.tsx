@@ -3,12 +3,10 @@ import CategoryFilter from "@/ui/pos-terminal/CategoryFilter";
 import ProductList from "@/ui/pos-terminal/ProductList";
 import SearchBar from "@/ui/SearchBar";
 import { useProducts } from "@/hooks/useProducts";
-import { useMerchant } from "@/hooks/use-merchant";
 import { useProductFilter } from "@/hooks/useProductFilter";
 
 export default function POSTerminal() {
-  const { id } = useMerchant();
-  const { products } = useProducts(id);
+  const { products } = useProducts();
 
   const {
     query,

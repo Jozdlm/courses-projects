@@ -2,13 +2,17 @@ import type { Product } from "@/lib/types";
 import { normalizeText } from "@/lib/utils";
 import { useState } from "react";
 
-export const useProductFilter = (products: Product[]) => {
+export const useProductFilter = (products: Product[] | null | undefined) => {
   const [query, setQuery] = useState<string>("");
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
     null,
   );
 
   const normalizedQuery = normalizeText(query);
+
+  if (!products) {
+    products = [];
+  }
 
   const filteredProducts = products.filter((product) => {
     const isMatchingQuery = normalizeText(product.name).includes(

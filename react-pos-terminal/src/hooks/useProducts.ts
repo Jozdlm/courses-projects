@@ -1,14 +1,22 @@
 import { getProductList } from "@/lib/actions";
-import type { Product } from "@/lib/types";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useMerchant } from "./use-merchant";
 
-export const useProducts = (merchantId: string) => {
-  const [products, setProducts] = useState<Product[]>([]);
+const QUERY_KEY = "products";
 
-  useEffect(() => {
-    // TODO: Retrieve products by MerchantId
-    getProductList().then(setProducts);
-  }, []);
+export const useProducts = () => {
+  const { id } = useMerchant();
 
-  return { products };
+  const {
+    data: products,
+    isError,
+    error,
+    isSuccess,
+    isLoading,
+  } = useQuery({
+    queryKey: [QUERY_KEY],
+    queryFn: () => getProductList(id),
+  });
+
+  return { products, isError, error, isSuccess, isLoading };
 };
