@@ -25,3 +25,21 @@ export const cartItemSchema = z.object({
 export const cartStateSchema = z.object({
   items: z.array(cartItemSchema),
 });
+
+export const merchantProfileSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  currency: z.string(),
+  country: z.string(),
+  language: z.string(),
+  tax: z.number().min(0).max(1),
+});
+
+export const userSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.string(),
+  role: z.string(),
+  merchantId: z.string(),
+  merchant: merchantProfileSchema,
+});

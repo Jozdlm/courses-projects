@@ -1,3 +1,4 @@
+import { userSchema } from "./schemas";
 import type { User } from "./types";
 
 export type SessionState =
@@ -11,6 +12,25 @@ export type SessionAction =
   | { type: "LOGIN_SUCCEEDED"; payload: User }
   | { type: "LOGIN_FAILED"; payload: string }
   | { type: "LOG_OUT" };
+
+export const SESSION_STORAGE_KEY = "session";
+
+export function getInitialSession(): SessionState {
+  try {
+    const raw = localStorage.getItem(SESSION_STORAGE_KEY);
+    if (!raw) return { status: "LOGGED_OUT" };
+
+    const result = userSchema.safeParse(JSON.parse(raw));
+    if (result.success) {
+      return { status: "LOGGED_IN", user: result.data };
+    }
+  } catch {
+    // invalid JSON or storage unavailable: fall through
+  }
+
+  localStorage.removeItem(SESSION_STORAGE_KEY);
+  return { status: "LOGGED_OUT" };
+}
 
 export const sessionReducer = (
   state: SessionState,
