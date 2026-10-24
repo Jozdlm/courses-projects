@@ -22,8 +22,9 @@ export async function getProductList(): Promise<Product[]> {
   return result.data;
 }
 
-export async function getCategoryList(): Promise<Category[]> {
-  return (await api.get<Category[]>("/categories")).data;
+export async function getCategoryList(merchantId: string): Promise<Category[]> {
+  const params = new URLSearchParams({ merchantId });
+  return (await api.get<Category[]>("/categories", { params })).data;
 }
 
 export async function getMerchantProfile(id: string): Promise<MerchantProfile> {

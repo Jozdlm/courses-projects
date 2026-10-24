@@ -6,10 +6,10 @@ const QUERY_KEY = "categories";
 
 export const useCategories = () => {
   const { id } = useMerchant();
-  // TODO: RETRIEVE CATEGORIES BY MERCHANT_ID
+
   const { data, isError, error, isSuccess, isLoading } = useQuery({
     queryKey: [QUERY_KEY],
-    queryFn: getCategoryList,
+    queryFn: () => getCategoryList(id),
   });
 
   return { data, isError, error, isSuccess, isLoading };
