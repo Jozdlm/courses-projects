@@ -6,7 +6,7 @@ import { logInWithPassword } from "@/lib/actions";
 import type { LoginPayload, User } from "@/lib/types";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ export default function LoginPage() {
   });
 
   if (session.status === "LOGGED_IN") {
-    return navigate("/dashboard");
+    return <Navigate to="/dashboard" replace />;
   }
 
   return (
