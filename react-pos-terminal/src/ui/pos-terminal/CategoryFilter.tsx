@@ -1,5 +1,5 @@
+import { Button } from "@/components/ui/button";
 import { useCategories } from "@/hooks/use-categories";
-import Button from "../Button";
 
 interface Props {
   selectedCategory: string | null;
@@ -11,7 +11,8 @@ export default function CategoryFilter({ selectedCategory, onSelect }: Props) {
   return (
     <div className="flex gap-2">
       <Button
-        variant={selectedCategory === null ? "filled" : "outline"}
+        variant={selectedCategory === null ? "default" : "outline"}
+        size="lg"
         onClick={() => onSelect(null)}
       >
         All
@@ -20,7 +21,8 @@ export default function CategoryFilter({ selectedCategory, onSelect }: Props) {
         categories.map((category) => (
           <Button
             key={category.id}
-            variant={category.id === selectedCategory ? "filled" : "outline"}
+            variant={category.id === selectedCategory ? "default" : "outline"}
+            size="lg"
             onClick={() => onSelect(category.id)}
           >
             {category.name}

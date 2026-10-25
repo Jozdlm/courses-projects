@@ -1,9 +1,9 @@
 import { Minus, Plus, Trash } from "lucide-react";
-import Button from "../Button";
 import { formatCurrency } from "@/lib/utils";
 import type { CartItem } from "@/lib/types";
 import { useCartDispatch } from "@/context/CartContext";
 import { useMerchant } from "@/hooks/use-merchant";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   item: CartItem;
@@ -21,10 +21,11 @@ export default function CartItem({ item }: Props) {
           {formatCurrency(item.unitPrice, currency, language)}
         </p>
       </div>
-      <div className="flex gap-2">
+      <div className="flex items-center gap-2">
         <Button
           variant="outline"
-          className="bg-transparent p-2"
+          size="icon-lg"
+          className="bg-transparent"
           onClick={() =>
             dispatch({ type: "DECREASE_QTY", payload: item.product.id })
           }
@@ -47,21 +48,23 @@ export default function CartItem({ item }: Props) {
         />
         <Button
           variant="outline"
-          className="bg-transparent p-2"
+          size="icon-lg"
+          className="bg-transparent"
           onClick={() =>
             dispatch({ type: "INCREASE_QTY", payload: item.product.id })
           }
         >
-          <Plus className="h-4" />
+          <Plus />
         </Button>
         <Button
-          variant="ghost"
+          variant="destructive"
+          size="icon-lg"
           className="p-2"
           onClick={() =>
             dispatch({ type: "REMOVE_ITEM", payload: item.product.id })
           }
         >
-          <Trash className="h-4 text-[#FB2C36]" />
+          <Trash />
         </Button>
       </div>
     </div>

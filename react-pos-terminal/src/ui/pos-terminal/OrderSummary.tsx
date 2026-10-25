@@ -1,9 +1,9 @@
 import { ShoppingCart } from "lucide-react";
-import Button from "../Button";
 import { formatCurrency, formatPercent } from "@/lib/utils";
 import CartItem from "./CartItem";
 import { useMerchant } from "@/hooks/use-merchant";
 import { useCart, useCartDispatch } from "@/context/CartContext";
+import { Button } from "@/components/ui/button";
 
 export default function OrderSummary() {
   const { currency, language, tax } = useMerchant();
@@ -20,7 +20,7 @@ export default function OrderSummary() {
         {cart.items.length > 0 && (
           <Button
             variant="ghost"
-            className="px-3 py-1.5"
+            size="lg"
             onClick={() => dispatch({ type: "CLEAR_CART" })}
           >
             Clear
@@ -52,7 +52,7 @@ export default function OrderSummary() {
               </p>
             </div>
           </div>
-          <Button variant="filled" className="w-full py-3">
+          <Button size="lg" className="w-full py-2.5">
             Checkout - {formatCurrency(cart.total, currency, language)}
           </Button>
         </div>

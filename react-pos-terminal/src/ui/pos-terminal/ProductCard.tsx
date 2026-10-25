@@ -1,9 +1,9 @@
 import type { Product } from "@/lib/types";
-import Button from "../Button";
 import { Plus } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
 import { useMerchant } from "@/hooks/use-merchant";
 import { useCartDispatch } from "@/context/CartContext";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   product: Product;
@@ -33,12 +33,12 @@ export default function ProductCard({ product }: Props) {
         </p>
       </div>
       <Button
-        variant="filled"
-        className="mt-auto flex w-full items-center justify-center gap-4"
+        size="lg"
+        className="mt-auto w-full"
         onClick={() => dispatch({ type: "ADD_ITEM", payload: product })}
       >
-        <Plus className="h-4 w-4" />
-        <span>Add to cart</span>
+        <Plus className="h-4 w-4" data-icon="inline-start" />
+        Add to cart
       </Button>
     </div>
   );
