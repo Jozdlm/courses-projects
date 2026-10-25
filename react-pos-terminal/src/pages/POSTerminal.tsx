@@ -1,7 +1,7 @@
 import OrderSummary from "@/ui/pos-terminal/OrderSummary";
 import CategoryFilter from "@/ui/pos-terminal/CategoryFilter";
 import ProductList from "@/ui/pos-terminal/ProductList";
-import SearchBar from "@/ui/SearchBar";
+import SearchBar from "@/components/SearchBar";
 import { useProducts } from "@/hooks/useProducts";
 import { useProductFilter } from "@/hooks/useProductFilter";
 
