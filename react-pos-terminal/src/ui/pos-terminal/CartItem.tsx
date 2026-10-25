@@ -4,6 +4,7 @@ import type { CartItem } from "@/lib/types";
 import { useCartDispatch } from "@/context/CartContext";
 import { useMerchant } from "@/hooks/use-merchant";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 interface Props {
   item: CartItem;
@@ -14,26 +15,27 @@ export default function CartItem({ item }: Props) {
   const dispatch = useCartDispatch();
 
   return (
-    <div className="flex justify-between rounded-xl bg-[#F9FAFB] p-3">
+    <div className="flex items-center justify-between rounded-xl bg-[#F9FAFB] p-3">
       <div>
         <p className="text-base font-medium">{item.product.name}</p>
         <p className="text-sm font-normal text-[#4A5565]">
           {formatCurrency(item.unitPrice, currency, language)}
         </p>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="items-strech flex h-10 gap-2">
         <Button
           variant="outline"
           size="icon-lg"
-          className="bg-transparent"
+          className="h-full bg-transparent"
           onClick={() =>
             dispatch({ type: "DECREASE_QTY", payload: item.product.id })
           }
         >
           <Minus className="h-4" />
         </Button>
-        <input
+        <Input
           type="text"
+          className="h-full w-16 text-center"
           value={item.quantity}
           onChange={(e) =>
             dispatch({
@@ -44,12 +46,11 @@ export default function CartItem({ item }: Props) {
               },
             })
           }
-          className="w-16 rounded-lg bg-[#F3F3F5] text-center"
         />
         <Button
           variant="outline"
           size="icon-lg"
-          className="bg-transparent"
+          className="h-full bg-transparent"
           onClick={() =>
             dispatch({ type: "INCREASE_QTY", payload: item.product.id })
           }
@@ -59,7 +60,7 @@ export default function CartItem({ item }: Props) {
         <Button
           variant="destructive"
           size="icon-lg"
-          className="p-2"
+          className="h-full"
           onClick={() =>
             dispatch({ type: "REMOVE_ITEM", payload: item.product.id })
           }

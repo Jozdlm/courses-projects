@@ -52,7 +52,7 @@ export default function OrderSummary() {
               </p>
             </div>
           </div>
-          <Button size="lg" className="w-full py-2.5">
+          <Button size="lg" className="h-12 w-full">
             Checkout - {formatCurrency(cart.total, currency, language)}
           </Button>
         </div>
