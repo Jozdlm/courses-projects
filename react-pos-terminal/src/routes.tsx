@@ -4,6 +4,8 @@ import App from "./App";
 import POSTerminal from "./pages/POSTerminal";
 import LoginPage from "./pages/auth/LoginPage";
 import TransactionsPage from "./pages/TransactionsPage";
+import Overview from "./pages/Overview";
+import Invoices from "./pages/Invoices";
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +22,15 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
+            Component: Overview,
+          },
+          {
+            path: "virtual-terminal",
             Component: POSTerminal,
+          },
+          {
+            path: "invoices",
+            Component: Invoices,
           },
           {
             path: "transaction-history",
