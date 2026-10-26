@@ -4,6 +4,7 @@ export interface Product {
   name: string;
   category: Category;
   price: number;
+  isActive: boolean;
 }
 
 export interface Category {
