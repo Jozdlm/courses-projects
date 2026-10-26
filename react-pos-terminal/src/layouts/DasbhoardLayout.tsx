@@ -14,7 +14,7 @@ export default function DashboardLayout() {
     <CartProvider>
       <div className="min-h-dvh bg-[#F9FAFB]">
         <Topbar />
-        <main className="mb-8 flex w-full justify-center">
+        <main className="flex w-full justify-center pb-8">
           <div className="w-full max-w-7xl">
             <Outlet />
           </div>
