@@ -1,5 +1,5 @@
 import { createBrowserRouter, redirect } from "react-router";
-import DashboardLayout from "./layouts/DasbhoardLayout";
+import DashboardLayout from "./layouts/DashboardLayout";
 import App from "./App";
 import POSTerminal from "./pages/POSTerminal";
 import LoginPage from "./pages/auth/LoginPage";
