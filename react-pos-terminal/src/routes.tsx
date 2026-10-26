@@ -6,6 +6,7 @@ import LoginPage from "./pages/auth/LoginPage";
 import TransactionsPage from "./pages/TransactionsPage";
 import Overview from "./pages/Overview";
 import Invoices from "./pages/Invoices";
+import Products from "./pages/Products";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
           {
             path: "transaction-history",
             Component: TransactionsPage,
+          },
+          {
+            path: "products",
+            Component: Products,
           },
         ],
       },

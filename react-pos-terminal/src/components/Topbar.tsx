@@ -35,11 +35,11 @@ const navigationLinks: NavItem[] = [
 ];
 
 const dropdownLinks: NavItem[] = [
-  { label: "Products", path: "/products", icon: <ShoppingBasketIcon /> },
-  { label: "Categories", path: "/categories", icon: <TagIcon /> },
-  { label: "Customers", path: "/customers", icon: <HandshakeIcon /> },
-  { label: "Users", path: "/users", icon: <UsersRoundIcon /> },
-  { label: "Settings", path: "/settings", icon: <SettingsIcon /> },
+  { label: "Products", path: "products", icon: <ShoppingBasketIcon /> },
+  { label: "Categories", path: "categories", icon: <TagIcon /> },
+  { label: "Customers", path: "customers", icon: <HandshakeIcon /> },
+  { label: "Users", path: "users", icon: <UsersRoundIcon /> },
+  { label: "Settings", path: "settings", icon: <SettingsIcon /> },
 ];
 
 export default function Topbar() {
@@ -80,7 +80,10 @@ export default function Topbar() {
               <DropdownMenuGroup>
                 <DropdownMenuLabel>My Business</DropdownMenuLabel>
                 {dropdownLinks.map((item) => (
-                  <DropdownMenuItem>
+                  <DropdownMenuItem
+                    key={item.path}
+                    onClick={() => navigate(item.path)}
+                  >
                     {item.icon}
                     {item.label}
                   </DropdownMenuItem>
