@@ -25,11 +25,17 @@ export const useProductFilter = (products: Product[] | null | undefined) => {
     );
   });
 
+  const clearSearchAndFilter = () => {
+    setQuery("");
+    setSelectedCategoryId(null);
+  };
+
   return {
     query,
     setQuery,
     selectedCategoryId,
     setSelectedCategoryId,
     filteredProducts,
+    clearSearchAndFilter,
   };
 };

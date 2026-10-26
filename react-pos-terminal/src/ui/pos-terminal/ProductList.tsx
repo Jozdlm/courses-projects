@@ -9,12 +9,14 @@ import {
 import { SearchIcon } from "lucide-react";
 import ProductCard from "./ProductCard";
 import type { Product } from "@/lib/types";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   products: Product[];
+  onClearFilter: () => void;
 }
 
-export default function ProductList({ products }: Props) {
+export default function ProductList({ products, onClearFilter }: Props) {
   if (products.length === 0) {
     return (
       <div
@@ -31,7 +33,9 @@ export default function ProductList({ products }: Props) {
               No products match the query or the selected category.
             </EmptyDescription>
           </EmptyHeader>
-          <EmptyContent>Click 'All' and clear the search bar.</EmptyContent>
+          <EmptyContent>
+            <Button onClick={onClearFilter}>Clear search and filter</Button>
+          </EmptyContent>
         </Empty>
       </div>
     );

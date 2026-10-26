@@ -7,13 +7,13 @@ import { useProductFilter } from "@/hooks/useProductFilter";
 
 export default function POSTerminal() {
   const { products } = useProducts();
-
   const {
     query,
     setQuery,
     selectedCategoryId,
     setSelectedCategoryId,
     filteredProducts,
+    clearSearchAndFilter,
   } = useProductFilter(products);
 
   return (
@@ -26,7 +26,10 @@ export default function POSTerminal() {
             onSelect={setSelectedCategoryId}
           />
         </div>
-        <ProductList products={filteredProducts} />
+        <ProductList
+          products={filteredProducts}
+          onClearFilter={clearSearchAndFilter}
+        />
       </div>
       <OrderSummary />
     </section>
