@@ -1,9 +1,17 @@
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCartIcon } from "lucide-react";
 import { formatCurrency, formatPercent } from "@/lib/utils";
 import CartItem from "./CartItem";
 import { useMerchant } from "@/hooks/use-merchant";
 import { useCart, useCartDispatch } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
 
 export default function OrderSummary() {
   const { currency, language, tax } = useMerchant();
@@ -14,7 +22,7 @@ export default function OrderSummary() {
     <section className="grid grid-rows-[auto_1fr] gap-6 self-start rounded-xl border border-gray-200 bg-white p-6">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <ShoppingCart size={20} />
+          <ShoppingCartIcon className="size-4" />
           <p className="text-base leading-6 font-normal">Current Order</p>
         </div>
         {cart.items.length > 0 && (
@@ -58,9 +66,20 @@ export default function OrderSummary() {
         </div>
       )}
       {cart.items.length === 0 && (
-        <div className="flex flex-col items-center justify-center gap-4 text-gray-400">
-          <ShoppingCart size={48} />
-          <p className="text-center font-medium">Cart Empty</p>
+        <div className="flex items-center justify-center">
+          <Empty>
+            <EmptyHeader>
+              <EmptyMedia variant="icon">
+                <ShoppingCartIcon />
+              </EmptyMedia>
+              <EmptyTitle>Cart Empty</EmptyTitle>
+              <EmptyDescription>
+                You haven't added a product to your cart yet. Search by name or
+                filter by category.
+              </EmptyDescription>
+            </EmptyHeader>
+            <EmptyContent>Click "Add to cart" in any product.</EmptyContent>
+          </Empty>
         </div>
       )}
     </section>
