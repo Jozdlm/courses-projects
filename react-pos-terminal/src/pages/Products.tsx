@@ -18,7 +18,7 @@ import {
 import { useMerchant } from "@/hooks/use-merchant";
 import { useProducts } from "@/hooks/useProducts";
 import { formatCurrency } from "@/lib/utils";
-import { MoreHorizontalIcon } from "lucide-react";
+import { MoreHorizontalIcon, PlusIcon } from "lucide-react";
 
 export default function Products() {
   const { products } = useProducts();
@@ -26,7 +26,12 @@ export default function Products() {
 
   return (
     <>
-      <h1 className="mb-4 text-2xl">Products</h1>
+      <div className="mb-4 flex items-center justify-between">
+        <h1 className="text-2xl">Products</h1>
+        <Button size="lg">
+          <PlusIcon data-icon="inline-start" /> Add product
+        </Button>
+      </div>
       <div className="rounded-md bg-white p-4">
         <Table>
           <TableHeader>
