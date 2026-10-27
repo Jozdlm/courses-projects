@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -34,6 +35,7 @@ export default function Products() {
               <TableHead>Name</TableHead>
               <TableHead>Price</TableHead>
               <TableHead>Category</TableHead>
+              <TableHead>Status</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -53,6 +55,15 @@ export default function Products() {
                     {formatCurrency(item.price, currency, language)}
                   </TableCell>
                   <TableCell>{item.category.name}</TableCell>
+                  <TableCell>
+                    {item.isActive ? (
+                      <Badge className="bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300">
+                        Active
+                      </Badge>
+                    ) : (
+                      <Badge variant="destructive">Inactive</Badge>
+                    )}
+                  </TableCell>
                   <TableCell className="text-right">
                     <DropdownMenu>
                       <DropdownMenuTrigger
