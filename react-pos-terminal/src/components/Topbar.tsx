@@ -16,7 +16,6 @@ import {
   SettingsIcon,
   ShoppingBasketIcon,
   TagIcon,
-  UsersRoundIcon,
 } from "lucide-react";
 import { NavLink, useNavigate } from "react-router";
 
@@ -30,7 +29,6 @@ interface NavItem {
 const navigationLinks: NavItem[] = [
   { label: "Home", path: "/dashboard", end: true },
   { label: "Virtual Terminal", path: "/dashboard/virtual-terminal" },
-  { label: "Invoices", path: "/dashboard/invoices" },
   { label: "Transaction History", path: "/dashboard/transaction-history" },
 ];
 
@@ -38,7 +36,6 @@ const dropdownLinks: NavItem[] = [
   { label: "Products", path: "products", icon: <ShoppingBasketIcon /> },
   { label: "Categories", path: "categories", icon: <TagIcon /> },
   { label: "Customers", path: "customers", icon: <HandshakeIcon /> },
-  { label: "Users", path: "users", icon: <UsersRoundIcon /> },
   { label: "Settings", path: "settings", icon: <SettingsIcon /> },
 ];
 
