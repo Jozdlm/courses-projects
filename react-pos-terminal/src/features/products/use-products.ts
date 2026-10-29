@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { useMerchant } from "./use-merchant";
 import { getProductList } from "@/features/products/";
+import { useMerchant } from "@/hooks/use-merchant";
 
 const QUERY_KEY = "products";
 

@@ -15,7 +15,7 @@ import {
   TableCell,
   Table,
 } from "@/components/ui/table";
-import { useCategories } from "@/hooks/use-categories";
+import { useCategories } from "@/features/products/use-categories";
 import { MoreHorizontalIcon, PlusIcon } from "lucide-react";
 
 export default function Categories() {

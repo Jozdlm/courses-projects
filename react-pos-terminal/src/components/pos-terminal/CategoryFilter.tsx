@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { useCategories } from "@/hooks/use-categories";
+import { useCategories } from "@/features/products/use-categories";
 
 interface Props {
   selectedCategory: string | null;

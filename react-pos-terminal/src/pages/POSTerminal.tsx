@@ -2,8 +2,8 @@ import OrderSummary from "@/components/pos-terminal/OrderSummary";
 import CategoryFilter from "@/components/pos-terminal/CategoryFilter";
 import ProductList from "@/components/pos-terminal/ProductList";
 import SearchBar from "@/components/SearchBar";
-import { useProducts } from "@/hooks/useProducts";
 import { useProductFilter } from "@/hooks/useProductFilter";
+import { useProducts } from "@/features/products/";
 
 export default function POSTerminal() {
   const { products } = useProducts();

@@ -15,8 +15,8 @@ import {
   TableCell,
   Table,
 } from "@/components/ui/table";
+import { useProducts } from "@/features/products";
 import { useMerchant } from "@/hooks/use-merchant";
-import { useProducts } from "@/hooks/useProducts";
 import { formatCurrency } from "@/lib/utils";
 import { MoreHorizontalIcon, PlusIcon } from "lucide-react";
 
