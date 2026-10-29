@@ -1,4 +1,5 @@
-import type { CartItem, Product } from "./types";
+import type { Product } from "@/features/products/";
+import type { CartItem } from "./types";
 
 export interface CartState {
   items: CartItem[];

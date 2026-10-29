@@ -1,4 +1,4 @@
-import type { Product } from "@/lib/types";
+import type { Product } from "@/features/products/";
 import { normalizeText } from "@/lib/utils";
 import { useState } from "react";
 

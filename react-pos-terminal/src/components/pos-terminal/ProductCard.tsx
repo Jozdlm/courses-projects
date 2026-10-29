@@ -1,9 +1,9 @@
-import type { Product } from "@/lib/types";
 import { Plus } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
 import { useMerchant } from "@/hooks/use-merchant";
 import { useCartDispatch } from "@/context/CartContext";
 import { Button } from "@/components/ui/button";
+import type { Product } from "@/features/products";
 
 interface Props {
   product: Product;

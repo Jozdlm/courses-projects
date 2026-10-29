@@ -8,8 +8,8 @@ import {
 } from "@/components/ui/empty";
 import { SearchIcon } from "lucide-react";
 import ProductCard from "./ProductCard";
-import type { Product } from "@/lib/types";
 import { Button } from "@/components/ui/button";
+import type { Product } from "@/features/products/";
 
 interface Props {
   products: Product[];

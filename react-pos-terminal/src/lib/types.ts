@@ -1,13 +1,4 @@
-import type { Category } from "@/features/categories/types";
-
-export interface Product {
-  id: string;
-  imgUrl: string;
-  name: string;
-  category: Category;
-  price: number;
-  isActive: boolean;
-}
+import type { Product } from "@/features/products/";
 
 export interface CartItem {
   product: Product;

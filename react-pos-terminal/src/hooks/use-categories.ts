@@ -1,5 +1,5 @@
+import { getCategoryList } from "@/features/products/";
 import { useMerchant } from "@/hooks/use-merchant";
-import { getCategoryList } from "@/lib/actions";
 import { useQuery } from "@tanstack/react-query";
 
 const QUERY_KEY = "categories";
