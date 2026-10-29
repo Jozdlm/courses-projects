@@ -1,13 +1,8 @@
-import type {
-  Category,
-  LoginPayload,
-  MerchantProfile,
-  Product,
-  User,
-} from "./types";
+import type { LoginPayload, MerchantProfile, Product, User } from "./types";
 import { api } from "./http";
 import z from "zod";
 import { productSchema } from "./schemas";
+import type { Category } from "@/features/categories/types";
 
 export async function getProductList(merchantId: string): Promise<Product[]> {
   const params = new URLSearchParams({ _embed: "category", merchantId });

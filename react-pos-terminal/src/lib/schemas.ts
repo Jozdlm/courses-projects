@@ -3,6 +3,7 @@ import { z } from "zod";
 export const categorySchema = z.object({
   id: z.uuid(),
   name: z.string(),
+  isActive: z.boolean(),
   merchantId: z.uuid(),
 });
 
