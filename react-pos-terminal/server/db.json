@@ -33,6 +33,29 @@
       "merchantId": "8b2f5d03-4c6e-4a79-8b1d-3e9f7c2a4b58"
     }
   ],
+  "customers": [
+    {
+      "id": "e1f2a3b4-bbbb-4e1f-8a2b-3c4d5e6f7081",
+      "name": "Maria Lopez",
+      "email": "maria.lopez@email.com",
+      "phone": "+502 5512 3489",
+      "merchantId": "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47"
+    },
+    {
+      "id": "f2a3b4c5-cccc-4f2a-9b3c-4d5e6f708192",
+      "name": "Carlos Ramirez",
+      "email": "carlos.ramirez@email.com",
+      "phone": "+502 4218 7760",
+      "merchantId": "7a1e4c92-3b5d-4f68-9a0c-2d8e6b1f3a47"
+    },
+    {
+      "id": "a3b4c5d6-dddd-4a3b-8c4d-5e6f708192a3",
+      "name": "Sofia Hernandez",
+      "email": "sofia.hernandez@email.com",
+      "phone": "+502 3340 9152",
+      "merchantId": "8b2f5d03-4c6e-4a79-8b1d-3e9f7c2a4b58"
+    }
+  ],
   "categories": [
     {
       "id": "a1b2c3d4-1111-4a1b-8c2d-3e4f5a6b7c8d",
