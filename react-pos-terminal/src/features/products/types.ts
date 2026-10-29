@@ -13,3 +13,16 @@ export interface Product {
   price: number;
   isActive: boolean;
 }
+
+export interface CreateProductInput {
+  name: string;
+  imgUrl: string;
+  categoryId: string;
+  price: number;
+  isActive: boolean;
+}
+
+export interface CreateCategoryInput {
+  name: string;
+  isActive: boolean;
+}
