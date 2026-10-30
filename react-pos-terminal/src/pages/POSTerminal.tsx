@@ -4,8 +4,10 @@ import ProductList from "@/components/pos-terminal/ProductList";
 import SearchBar from "@/components/SearchBar";
 import { useProductFilter } from "@/hooks/useProductFilter";
 import { useProducts } from "@/features/products/";
+import { useEffect, useRef } from "react";
 
 export default function POSTerminal() {
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const { products } = useProducts();
   const {
     query,
@@ -16,11 +18,19 @@ export default function POSTerminal() {
     clearSearchAndFilter,
   } = useProductFilter(products);
 
+  useEffect(() => {
+    searchInputRef.current?.focus();
+  }, []);
+
   return (
     <section className="grid grid-cols-[1fr_400px] gap-6">
       <div className="grid grid-flow-row grid-rows-[min-content_1fr] gap-4">
         <div className="rounded-xl border border-gray-200 bg-white p-4">
-          <SearchBar value={query} onSearch={setQuery} />
+          <SearchBar
+            value={query}
+            onSearch={setQuery}
+            inputRef={searchInputRef}
+          />
           <CategoryFilter
             selectedCategory={selectedCategoryId}
             onSelect={setSelectedCategoryId}
